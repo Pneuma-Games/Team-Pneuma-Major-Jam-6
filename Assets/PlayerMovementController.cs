@@ -7,18 +7,22 @@ namespace Monster.Player
         [SerializeField] private CharacterController _cc;
         
         [SerializeField] private float _accel;
-        [SerializeField] private float _climbSpeed;
         [SerializeField] private float _maxForwardSpeed;
-        [SerializeField] private float _maxClimbSpeed;
+        [SerializeField] private float _gravityFactor;
         [SerializeField] private float _decayRate;
+        [SerializeField] private float _decayRateMidair;
+        [SerializeField] private float _midairAccelFactor;
+
         [SerializeField] private SurfaceDetector _surfaceDetector;
         [SerializeField] private PlayerCamera _playerCam;
 
+        private bool _boostUsed;
 
         private Vector2 _flatVelocity;
         private float _verticalVelocity;
-        private bool _climbing = false;
-        private bool _falling = false;
+
+        private bool _groundedLastFrame;
+        private float _timeAirborne;
 
         private bool _onSurface => _cc.isGrounded;
 
@@ -37,6 +41,8 @@ namespace Monster.Player
             var x = Input.GetAxis(HORIZONTAL);
             var y = Input.GetAxis(VERTICAL);
 
+            // if (global::Player.Alive == false) return;
+
             UpdateHorizontalVelocity(x, y);
             UpdateVerticalVelocity();
 
@@ -46,9 +52,17 @@ namespace Monster.Player
 
         private void UpdateHorizontalVelocity(float x, float y)
         {
-
+            /*
+            if (global::Player.Alive == false)
+            {
+                x = y = 0;
+            }*/
 
             var accelFactor = 1.0f;
+            if (!_onSurface)
+            {
+                accelFactor = _midairAccelFactor;
+            }
 
             var inputVec = Vector2.ClampMagnitude(new Vector2(x, y), 1.0f);
             var input3 = _playerCam.FlatRotation * new Vector3(inputVec.x, 0, inputVec.y);
@@ -57,65 +71,69 @@ namespace Monster.Player
             _flatVelocity += inputVec * (_accel * accelFactor * Time.deltaTime);
             
             _flatVelocity = Vector2.ClampMagnitude(_flatVelocity, _maxForwardSpeed);
-            _verticalVelocity = Mathf.Clamp(_verticalVelocity, -_maxClimbSpeed, _maxClimbSpeed);
         }
 
         private void FixedUpdate()
         {
             var decayRate = _decayRate;
-
+            if (!_onSurface)
+            {
+                decayRate = _decayRateMidair;
+            }
             
             _flatVelocity *= decayRate;
-            _verticalVelocity *= decayRate;
         }
-
-        
 
         private void UpdateVerticalVelocity()
         {
-            
-            //new logic for flying
-            if (Input.GetKeyDown(KeyCode.E))
+            if (_cc.isGrounded)
             {
-                //go up
-                _climbing = true;
+                if (!_groundedLastFrame && _timeAirborne > 0.3f)
+                {
+                    // Landing sound here
+                }
+                
+                _verticalVelocity = -1;
+                _boostUsed = false;
+                if (Input.GetKeyDown(KeyCode.Space) /*&& global::Player.Alive*/)
+                {
+                    if (_verticalVelocity < 0)
+                    {
+                        _verticalVelocity = 0;
+                    }
+                    _verticalVelocity += 7.4f;
+                    // Jump sound here
+                }
             }
-            if (Input.GetKeyUp(KeyCode.E))
+            else
             {
-                //go up
-                _climbing = false;
+                if (!_boostUsed && Input.GetKeyDown(KeyCode.Space) /*&& global::Player.Alive*/)
+                {
+                    if (_verticalVelocity < 0)
+                    {
+                        _verticalVelocity = 0;
+                    }
+                    _verticalVelocity += 4.2f;
+                    if (_verticalVelocity > 7.4f) _verticalVelocity = 8.5f;
+                    _boostUsed = true;
+                    // double jump sound here
+                }
+
+                if (_groundedLastFrame)
+                {
+                    _timeAirborne = 0;
+                }
+                _timeAirborne += Time.deltaTime;
             }
-
-            
-
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                //go up
-                _falling = true;
-            }
-
-            if (Input.GetKeyUp(KeyCode.Q))
-            {
-                //go up
-                _falling = false;
-            }
-
-            if (_climbing)
-            {
-                _verticalVelocity += _climbSpeed;
-            } else if (_falling)
-            {
-                _verticalVelocity -= _climbSpeed;
-            }
-
-           
 
             if (_surfaceDetector.Above)
             {
                 _verticalVelocity = -0.33f;
             }
+            
+            _verticalVelocity = Mathf.Clamp(_verticalVelocity - _gravityFactor * Time.deltaTime, -35, 15);
 
-            //_groundedLastFrame = _cc.isGrounded;
+            _groundedLastFrame = _cc.isGrounded;
         }
         
         #region Editor mouse pointer handling
@@ -147,5 +165,14 @@ namespace Monster.Player
         }
         #endregion
         
+        /*
+        private void OnGUI()
+        {
+            GUI.TextArea(new Rect(10, 10, 100, 30), $"vel: {_flatVelocity.magnitude:F2}");
+            GUI.TextArea(new Rect(10, 40, 100, 30), $"vert: {_verticalVelocity:F2}");
+            GUI.TextArea(new Rect(10, 70, 100, 30), $"grounded: {_cc.isGrounded}");
+            GUI.TextArea(new Rect(10, 100, 100, 30), $"latched: {_latched}");
+        }
+        */
     }
 }
