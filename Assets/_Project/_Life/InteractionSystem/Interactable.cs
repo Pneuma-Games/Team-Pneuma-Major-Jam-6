@@ -1,4 +1,4 @@
-using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,9 +12,12 @@ namespace Life.InteractionSystem
         
         public string Name => _name;
         public string FlavourText => _flavourText;
+        public bool ConditionsMet => _conditions.Length == 0 || _conditions.All(condition => condition.CanInteract());
         
         [SerializeField] private string _name;
         [SerializeField] private string _flavourText;
+
+        private IInteractionCondition[] _conditions;
 
         public void Select()
         {
@@ -28,7 +31,13 @@ namespace Life.InteractionSystem
 
         public void Trigger()
         {
+            if (!ConditionsMet) return;
             OnInteractableTriggeredEvent.Invoke();
+        }
+
+        private void Awake()
+        {
+            _conditions = GetComponents<IInteractionCondition>();
         }
     }
 }

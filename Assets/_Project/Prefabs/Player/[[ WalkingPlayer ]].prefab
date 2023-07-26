@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4148932573236442905}
   - component: {fileID: 4899764577907727295}
   - component: {fileID: 8114424415304324716}
+  - component: {fileID: 3538161770311283511}
   m_Layer: 3
   m_Name: Player Camera
   m_TagString: MainCamera
@@ -137,6 +138,27 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &3538161770311283511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747421326191323316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4c8ddc3aeb8b5743933970446329ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blockMask:
+    serializedVersion: 2
+    m_Bits: 1
+  _interactionRange: 1.25
+  _castRadius: 0.15
+  _cooldown: 0.25
+  _activationKey: 102
+  _queryTriggers: 1
+  _drawDebugUI: 1
 --- !u!1 &2980289964800364863
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,6 +219,7 @@ GameObject:
   - component: {fileID: 7373938048493457619}
   - component: {fileID: 7499665238171651797}
   - component: {fileID: 3546213631382503359}
+  - component: {fileID: 8567662020867384637}
   m_Layer: 3
   m_Name: '[[ WalkingPlayer ]]'
   m_TagString: Untagged
@@ -296,6 +319,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8567662020867384637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6095323989129879694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3eda4ac2820430ebc5cc2beefe27898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dropPoint: {fileID: 0}
 --- !u!1 &6629894924299246646
 GameObject:
   m_ObjectHideFlags: 0

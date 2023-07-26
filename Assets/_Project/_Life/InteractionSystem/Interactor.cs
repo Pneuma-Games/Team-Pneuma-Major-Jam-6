@@ -61,8 +61,9 @@ namespace Life.InteractionSystem
                 HandleDeselect();
             }
             
-            if (Input.GetKeyDown(_activationKey) && _currentInteractable)
+            if (Input.GetKeyDown(_activationKey) && _currentInteractable && _currentInteractable.ConditionsMet)
             {
+                Debug.Log($"Interacting with {_currentInteractable.gameObject.name}");
                 _currentInteractable.Trigger();
                 HandleDeselect();
                 _timer = _cooldown;
@@ -105,15 +106,16 @@ namespace Life.InteractionSystem
         {
             if (!_drawDebugUI) return;
             var width = 400;
-            var height = 150;
+            var height = 120;
             var w = Screen.width / 2f - width / 2f;
-            var h = Screen.height * 0.9f;
+            var h = Screen.height * 0.85f;
             var rect = new Rect(w, h, width, height);
 
             var info = _currentInteractable ? $"Selected: {_currentInteractable}" : "No interactable selected";
             var name = _currentInteractable ? _currentInteractable.Name : "---";
             var flavourText = _currentInteractable ? _currentInteractable.FlavourText : "---";
-            GUI.TextArea(rect, $"{info}\nName: {name}\nFlavour Text: {flavourText}", GUI.skin.box);
+            var available = _currentInteractable ? _currentInteractable.ConditionsMet.ToString() : "false";
+            GUI.TextArea(rect, $"{info}\nName: {name}\nFlavour: {flavourText}\nAvailable: {available}", GUI.skin.box);
         }
     }
 }
