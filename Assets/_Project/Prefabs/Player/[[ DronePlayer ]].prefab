@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4048784064741197434}
   - component: {fileID: 927531704243776218}
   - component: {fileID: 7059604927730429596}
+  - component: {fileID: 702812677964454878}
   m_Layer: 0
   m_Name: DroneCamera
   m_TagString: MainCamera
@@ -144,6 +145,27 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &702812677964454878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2249030390812240165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4c8ddc3aeb8b5743933970446329ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blockMask:
+    serializedVersion: 2
+    m_Bits: 1
+  _interactionRange: 1.25
+  _castRadius: 0.2
+  _cooldown: 0.25
+  _activationKey: 102
+  _queryTriggers: 1
+  _drawDebugUI: 1
 --- !u!1 &6015932001428480378
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,6 +178,7 @@ GameObject:
   - component: {fileID: 4895846882718942798}
   - component: {fileID: 7495594500858342607}
   - component: {fileID: 8780948394425571813}
+  - component: {fileID: 633667150973345302}
   m_Layer: 0
   m_Name: '[[ DronePlayer ]]'
   m_TagString: Untagged
@@ -246,3 +269,16 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &633667150973345302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6015932001428480378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3eda4ac2820430ebc5cc2beefe27898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dropPoint: {fileID: 0}
