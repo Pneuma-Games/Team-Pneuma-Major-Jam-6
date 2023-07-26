@@ -5,7 +5,6 @@ namespace Life
     public class DroneTilt : MonoBehaviour
     {
         [SerializeField] private float _maxTilt;
-        [SerializeField] private float _maxSpeed;
         [SerializeField] private Rigidbody _rb;
         
         // Update is called once per frame
