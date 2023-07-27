@@ -2,7 +2,8 @@
     "name": "Life",
     "rootNamespace": "Life",
     "references": [
-        "GUID:3ed5553b4815df04fa43f68e3c335c38"
+        "GUID:3ed5553b4815df04fa43f68e3c335c38",
+        "GUID:66c2eb417c67ad849907d0769db96dbf"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
