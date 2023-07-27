@@ -10,13 +10,14 @@ namespace Life.TransportSystem
     {
         // Used for spawning dropped items.
         [SerializeField] private Transform _dropPoint;
-        
+
         public ITransportable HeldItem { get; private set; }
+        
         
         public void Store(ITransportable item)
         {
             HeldItem = item;
-            item.GameObject.SetActive(false);
+            if (item != null) item.GameObject.SetActive(false);
         }
         
         public ITransportable Retrieve()

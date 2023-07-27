@@ -15,5 +15,12 @@ namespace Life.TransportSystem
 
             return false;
         }
+
+        // Exists for the purpose of referencing to UnityEvents in inspector
+        // - the engine doesn't serialize non-void return types.
+        public void StoreItemViaEvent()
+        {
+            StoreItem();
+        }
     }
 }
