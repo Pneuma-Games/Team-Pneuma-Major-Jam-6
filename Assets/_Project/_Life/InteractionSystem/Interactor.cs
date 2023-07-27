@@ -64,8 +64,9 @@ namespace Life.InteractionSystem
             if (Input.GetKeyDown(_activationKey) && _currentInteractable && _currentInteractable.ConditionsMet)
             {
                 Debug.Log($"Interacting with {_currentInteractable.gameObject.name}");
-                _currentInteractable.Trigger();
-                HandleDeselect();
+                var interactable = _currentInteractable;
+                _currentInteractable = null;
+                interactable.Trigger();
                 _timer = _cooldown;
             }
         }
