@@ -639,6 +639,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
+    Standalone: NODECANVAS
     WebGL: NODECANVAS
   additionalCompilerArguments: {}
   platformArchitecture: {}
