@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 7499665238171651797}
   - component: {fileID: 3546213631382503359}
   - component: {fileID: 8567662020867384637}
+  - component: {fileID: 8348389771690129119}
   m_Layer: 3
   m_Name: '[[ WalkingPlayer ]]'
   m_TagString: Untagged
@@ -332,6 +333,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dropPoint: {fileID: 0}
+--- !u!114 &8348389771690129119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6095323989129879694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 361a3f88d25d4f37aa46ccb4c1b7eea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6629894924299246646
 GameObject:
   m_ObjectHideFlags: 0

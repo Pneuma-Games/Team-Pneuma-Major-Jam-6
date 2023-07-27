@@ -1,5 +1,4 @@
-using System;
-using System.Collections;
+using DG.Tweening;
 using Life.MovementControllers;
 using UnityEngine;
 
@@ -12,58 +11,49 @@ namespace Life.InteractionSystem
     /// </summary>
     public class ControlTransferTransition : MonoBehaviour
     {
-        [SerializeField] private IInPlaceInteraction _interaction;
+        private IInPlaceInteraction _interaction;
+        [SerializeField] private float _transitionTime = 0.5f;
+
+        private MobilePlayerAvatar _interactingAvatar;
 
         public void TransferFromPlayer()
         {
-            //MobilePlayerAvatar.Current
+            _interactingAvatar = MobilePlayerAvatar.Current;
+            var camObjTForm = _interaction.StaticCamera.transform;
+            var playerCamTForm = MobilePlayerAvatar.Current.MobileCamera.transform;
+            _interaction.StaticCamera.fieldOfView = _interactingAvatar.MobileCamera.fieldOfView;
+            camObjTForm.SetPositionAndRotation(playerCamTForm.position, playerCamTForm.rotation);
+            _interactingAvatar.gameObject.SetActive(false);
+            camObjTForm.gameObject.SetActive(true);
+            camObjTForm.DOMove(_interaction.TargetCameraPosition, _transitionTime).OnComplete(() =>
+            {
+                _interaction.TransferControl();
+            });
+            camObjTForm.DORotateQuaternion(_interaction.TargetCameraRotation, _transitionTime);
+            _interaction.StaticCamera.DOFieldOfView(_interaction.TargetCameraFOV, _transitionTime);
         }
 
         public void TransferToPlayer()
         {
-            
-        }
-        
-    }
-
-    public interface IInPlaceInteraction
-    {
-        Vector3 CameraPosition { get; }
-        Quaternion CameraRotation { get; }
-        Camera StaticCamera { get; }
-        public void TransferControl(MobilePlayerAvatar avatar);
-        public void ReturnControl();
-    }
-
-    /// <summary>
-    /// An interaction that "glues" the player in place.
-    /// </summary>
-    public class InPlaceInteractionExample : MonoBehaviour, IInPlaceInteraction
-    {
-        public Vector3 CameraPosition { get; private set; }
-        public Quaternion CameraRotation { get; private set; }
-        public Camera StaticCamera { get; private set; }
-        private MobilePlayerAvatar _currentlyInteractingAvatar;
-        
-        public void TransferControl(MobilePlayerAvatar avatar)
-        {
-            _currentlyInteractingAvatar = avatar;
-            avatar.gameObject.SetActive(false);
-            StaticCamera.gameObject.SetActive(true);
-        }
-        
-        public void ReturnControl()
-        {
-            _currentlyInteractingAvatar.gameObject.SetActive(true);
-            StaticCamera.gameObject.SetActive(false);
-            _currentlyInteractingAvatar = null;
+            var camObjTForm = _interaction.StaticCamera.transform;
+            var playerCamTForm = _interactingAvatar.MobileCamera.transform; 
+            camObjTForm.DOMove(playerCamTForm.position, _transitionTime).OnComplete(() =>
+            {
+                _interactingAvatar.gameObject.SetActive(true);
+                camObjTForm.gameObject.SetActive(false);
+            });
+            camObjTForm.DORotateQuaternion(playerCamTForm.rotation, _transitionTime);
+            _interaction.StaticCamera.DOFieldOfView(_interactingAvatar.MobileCamera.fieldOfView, _transitionTime);
         }
 
         private void Awake()
         {
-            StaticCamera = GetComponentInChildren<Camera>();
-            CameraPosition = StaticCamera.transform.position;
-            CameraRotation = StaticCamera.transform.rotation;
+            _interaction = GetComponent<IInPlaceInteraction>();
+            if (_interaction == null)
+            {
+                Debug.LogError($"Expected an implementation of IInPlaceInteraction on {gameObject.name}!");
+                Destroy(this);
+            }
         }
     }
 }
