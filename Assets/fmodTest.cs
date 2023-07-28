@@ -9,7 +9,7 @@ public class fmodTest : MonoBehaviour
     void Start()
     {
         test = FMODUnity.RuntimeManager.CreateInstance("event:/ambient_cockpit");
-        test.start(FMOD.Studio.S
+        //test.start(FMOD.Studio.S
     }
 
     // Update is called once per frame
