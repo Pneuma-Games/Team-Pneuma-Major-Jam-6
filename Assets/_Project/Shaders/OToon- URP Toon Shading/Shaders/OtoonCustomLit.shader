@@ -74,7 +74,7 @@ Shader "URP/OToonCustomLit"
         [Toggle(_OUTLINE)] _OutlineEnabled ("[Indent]Enable Outline", Float) = 0.0
         _OutlineColor ("[Outline]Outline Color", Color) = (0, 0, 0, 1)
         _OutlineWidth ("[Outline]Outline Width", Range(0, 15)) = 0.0
-        [MinMax(Near, Far, 200)]_OutlineDistancFade ("[Outline] Fade outline with near/far distance ", Vector) = (-25, 50, 0, 0)
+        [MinMax(Near, Far, 2000)]_OutlineDistancFade ("[Outline] Fade outline with near/far distance ", Vector) = (-25, 50, 0, 0)
 
         [ToggleEx] _SpherizeNormalEnabled ("[Indent]SpherizeNormalEnabled", Float) = 0.0
         _SpherizeNormalOrigin ("_SpherizeNormalOrigin", Vector) = (0, 0, 0, 0)
