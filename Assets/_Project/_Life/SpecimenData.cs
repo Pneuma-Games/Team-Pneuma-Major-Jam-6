@@ -13,6 +13,8 @@ namespace Life
         public bool RequiresDrilling;
         public bool RequiresDNA;
         public bool Dangerous;
+        public bool DrillLube;
+        public int DrillRpm;
     }
 
     [Serializable]
@@ -23,5 +25,6 @@ namespace Life
         public bool DNAComplete;
         public bool QuantumComplete;
         public bool Stored;
+        public bool Destroyed;
     }
 }

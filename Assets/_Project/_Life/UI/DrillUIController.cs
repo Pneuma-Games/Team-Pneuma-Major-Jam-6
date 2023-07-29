@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Life
 {
@@ -12,7 +13,10 @@ namespace Life
         [SerializeField] private TextMeshProUGUI _rpmTMP;
         [SerializeField] private TextMeshProUGUI _lubeTMP;
         [SerializeField] private TextMeshProUGUI _errorTMP;
-
+        [SerializeField] private RectTransform _progressFill;
+        [SerializeField] private float _progressFillMinHeight = 1.5f;
+        [SerializeField] private float _progressFillMaxHeight = 13.306f;
+        
         private int _currentRpm;
         private int _targetRpm;
         
@@ -45,6 +49,12 @@ namespace Life
             _errorTMP.gameObject.SetActive(active);
         }
         
+        public void SetProgress(float progress)
+        {
+            var newHeight = Mathf.Lerp(_progressFillMinHeight, _progressFillMaxHeight, progress);
+            _progressFill.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, newHeight);
+        }
+
         private void BlinkText(TextMeshProUGUI text)
         {
             DOTween.Kill(text, true);

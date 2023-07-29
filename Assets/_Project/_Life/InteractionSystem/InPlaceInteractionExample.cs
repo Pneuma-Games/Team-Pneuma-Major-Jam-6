@@ -22,6 +22,7 @@ namespace Life.InteractionSystem
         public void TransferControl()
         {
             _inControl = true;
+            WorldUI.Instance.Canvas.worldCamera = StaticCamera;
         }
         
         /// <summary>
@@ -33,6 +34,7 @@ namespace Life.InteractionSystem
         {
             GetComponent<ControlTransferTransition>().TransferToPlayer();
             _inControl = false;
+            WorldUI.Instance.Canvas.worldCamera = null;
         }
 
         private void Update()
