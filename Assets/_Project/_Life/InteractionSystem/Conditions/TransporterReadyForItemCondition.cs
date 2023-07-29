@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Life.InteractionSystem
 {
-    public class TransporterReadyForItem : MonoBehaviour, IInteractionCondition
+    public class TransporterReadyForItemCondition : MonoBehaviour, IInteractionCondition
     {
         public bool CanInteract()
         {
