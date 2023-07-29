@@ -15,17 +15,18 @@ public class SpecimenPanel : MonoBehaviour
 
     //For Testing
     //[SerializeField] private Sprite image;
-    //private void Start()
-    //{
-    //    SetSpecimenImage(image);
-    //    SetSpecimenIndicatorColor(Color.blue);
-    //    StartCoroutine(SetSpecimenID("test string"));
-    //    SetStrikeCount(2);
-    //}
+    private void Start()
+    {
+        //SetSpecimenImage(image);
+        //SetSpecimenIndicatorColor(Color.blue);
+        //StartCoroutine(SetSpecimenID("test string"));
+        //SetStrikeCount(2);
+    }
 
     public void SetSpecimenImage(Sprite newImage)
     {
         specimenImage.GetComponent<Image>().sprite = newImage;
+        specimenImage.SetActive(newImage != null);
     }
     
     public void SetSpecimenIndicatorColor(Color newColor)
@@ -37,17 +38,15 @@ public class SpecimenPanel : MonoBehaviour
     {
         var newString = "";
 
-        Debug.Log(newID);
-
         foreach (var c in newID)
         {
             newString += c;
             specimenID.GetComponent<TextMeshProUGUI>().text = $"ID: {newString}";
 
-            Debug.Log(newString);
-
             yield return new WaitForSeconds(Random.Range(minIDDisplayTime, maxIDDisplayTime));
         }
+
+        specimenImage.SetActive(!string.IsNullOrEmpty(newID));
     }
     
     public void SetStrikeCount(int count)
