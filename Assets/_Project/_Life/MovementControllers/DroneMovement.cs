@@ -29,7 +29,7 @@ namespace Life.MovementControllers
             _rb.useGravity = false;
             _rb.interpolation = RigidbodyInterpolation.Interpolate;
         }
-
+        
         private void Update()
         {
             _xInput = Input.GetAxis("Horizontal");

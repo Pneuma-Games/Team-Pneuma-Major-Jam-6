@@ -1,4 +1,5 @@
 using System.Collections;
+using Life.TransportSystem;
 using UnityEngine;
 
 namespace Life
@@ -110,8 +111,12 @@ namespace Life
 
         public override void AcceptItem()
         {
+        }
+
+        public void TakeOverItem(ITransportable item)
+        {
+            _item = item;
             _ui.SetInput("Present");
-            base.AcceptItem();
         }
     }
 }
