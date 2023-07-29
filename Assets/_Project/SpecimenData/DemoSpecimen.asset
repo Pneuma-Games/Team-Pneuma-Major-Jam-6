@@ -13,3 +13,8 @@ MonoBehaviour:
   m_Name: DemoSpecimen
   m_EditorClassIdentifier: 
   Name: Specimenus Maximus
+  RequiresDrilling: 1
+  RequiresDNA: 0
+  Dangerous: 0
+  DrillLube: 1
+  DrillRpm: 3000
