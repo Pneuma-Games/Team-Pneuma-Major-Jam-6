@@ -260,7 +260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cc: {fileID: 7499665238171651797}
   _accel: 450
-  _maxForwardSpeed: 5.6
+  _maxForwardSpeed: 3.5
   _gravityFactor: 12
   _decayRate: 0.03
   _decayRateMidair: 0.995

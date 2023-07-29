@@ -5,6 +5,8 @@ namespace Life
 {
     public class ReceptacleStation : ProcessingStationBase
     {
+        [SerializeField] private ChuteStation _chute;
+        
         public Transform DoorReference;
         public Transform Door;
         [SerializeField] private float _yOpen;
@@ -22,6 +24,12 @@ namespace Life
         {
             DOTween.Kill(Door, true);
             Door.DOLocalMoveY(_yClosed, .35f).SetEase(Ease.InOutCubic);
+        }
+
+        public void PassItemToChute()
+        {
+            _chute.TakeOverItem(_item);
+            _item = null;
         }
     }
 }

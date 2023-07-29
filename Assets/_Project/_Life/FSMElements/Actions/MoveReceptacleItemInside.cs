@@ -6,7 +6,7 @@ namespace Life
     {
         protected override void OnExecute()
         {
-            agent.SpitOutItem();
+            agent.PassItemToChute();
             EndAction();
         }
     }

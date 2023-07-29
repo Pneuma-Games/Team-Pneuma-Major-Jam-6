@@ -72,7 +72,7 @@ namespace Life.MovementControllers
 
         private void OnEnable()
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = false;
         }
     }
