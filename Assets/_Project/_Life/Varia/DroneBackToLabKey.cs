@@ -14,5 +14,21 @@ namespace Life
                 this.gameObject.SetActive(false);
             }
         }
+
+        private void OnEnable()
+        {
+            var audio = AudioManager.Instance;
+            if (!audio) return;
+            audio.PlayDroneAmbient();
+            audio.EnterDroneFeed();
+        }
+
+        private void OnDisable()
+        {
+            var audio = AudioManager.Instance;
+            if (!audio) return;
+            audio.StopDroneAmbient();
+            audio.ExitDroneFeed();
+        }
     }
 }

@@ -47,6 +47,10 @@ namespace Life.MovementControllers
             
             _boostInput = Input.GetKey(KeyCode.LeftShift);
             _haltInput = Input.GetKey(KeyCode.Space);
+            
+            var audio = AudioManager.Instance;
+            if (!audio) return;
+            audio.UpdateDroneSpeed(_flatVelocity.magnitude);
         }
 
         private void FixedUpdate()
