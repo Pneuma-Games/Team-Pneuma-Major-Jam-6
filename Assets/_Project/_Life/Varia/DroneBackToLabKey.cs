@@ -5,7 +5,6 @@ namespace Life
 {
     public class DroneBackToLabKey : MonoBehaviour
     {
-        
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.V))
