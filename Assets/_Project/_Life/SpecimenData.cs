@@ -1,5 +1,4 @@
 using System;
-using Unity.Collections;
 using UnityEngine;
 
 namespace Life
@@ -21,6 +20,7 @@ namespace Life
     public class SpecimenProgress
     {
         public bool Scanned;
+        public bool Deposited;
         public bool DrillComplete;
         public bool DNAComplete;
         public bool QuantumComplete;
