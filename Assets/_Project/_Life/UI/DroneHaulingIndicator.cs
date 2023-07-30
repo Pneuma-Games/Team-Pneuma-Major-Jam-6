@@ -25,6 +25,5 @@ namespace Life
                 _tmp.gameObject.SetActive(false);
             }
         }
-        
     }
 }

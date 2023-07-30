@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -10,16 +8,7 @@ using UnityEngine;
 public class TriggerAnimScript : MonoBehaviour
 {
     Animator canisterAnim;
-
-
-    private void Update()
-    {
-        if(Input.GetButtonDown("Fire1"))
-        {
-            OnPushActivate();
-        }
-    }
-
+    
     private void Awake()
     {
         canisterAnim = GetComponent<Animator>();

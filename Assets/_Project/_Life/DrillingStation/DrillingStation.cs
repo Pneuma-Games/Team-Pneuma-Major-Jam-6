@@ -20,7 +20,7 @@ namespace Life
             if (!_ui)
                 _ui = FindObjectOfType<DrillUIController>();
             
-            _ui.SetRPM(1000);
+            _ui.SetRPM(_rpm);
             _ui.SetStatus("Ready");
             _ui.SetInput("None");
             _ui.SetLube(false);
@@ -100,7 +100,7 @@ namespace Life
         private bool VerifyDrill()
         {
             var specimen = _item.GameObject.GetComponent<Specimen>().SpecimenData;
-            return _rpm == specimen.DrillRpm && _lube == specimen.DrillLube;
+            return _rpm == specimen.DrillRpm && _lube == specimen.DrillLube && specimen.RequiresDrilling;
         }
 
         public override void SpitOutItem()

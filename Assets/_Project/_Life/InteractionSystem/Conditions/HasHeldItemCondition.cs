@@ -11,7 +11,7 @@ namespace Life.InteractionSystem
 
         public string GetErrorMessage()
         {
-            return "Requires an item to be held.";
+            return "Requires a sample in inventory.";
         }
     }
 }
