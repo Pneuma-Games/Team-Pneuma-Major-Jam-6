@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/_Project/Sprites/drill_ui.png.meta
 guid: 1854b313f1a535943b08f34cfa9f00c2
+========
+guid: 4c964f23c28b5f74fbdca43be2dad9e8
+>>>>>>>> Modified-Assembly:Assets/_Project/FBX/FINALS/Generator Box/Generator-Diffuse.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

@@ -128,7 +128,7 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BrushLowerCut: 0
-    - _BrushSize: 1.28
+    - _BrushSize: 0.734
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -155,12 +155,12 @@ Material:
     - _HairSpecNoiseStrength: 1
     - _HairSpecularSize: 0.8
     - _HairSpecularSmoothness: 0.1
-    - _HalfToneDiffuseStep: -0.7
+    - _HalfToneDiffuseStep: -1
     - _HalfToneEnabled: 1
     - _HalfToneIncludeReceivedShadow: 1
     - _HalfToneShape: 0
     - _HalfToneUvMode: 0
-    - _HalftoneFadeDistance: 23.6
+    - _HalftoneFadeDistance: 2.6
     - _HalftoneFadeToColor: 0
     - _HalftoneNoiseClip: 8.8
     - _HalftoneTilling: 30.37
@@ -183,10 +183,10 @@ Material:
     - _ReceiveShadows: 0
     - _RimEnabled: 1
     - _RimLightAlign: 0.13
-    - _RimLightSmoothness: 0
-    - _RimPower: 0.28
+    - _RimLightSmoothness: 0.037
+    - _RimPower: 0.324
     - _Shininess: 0
-    - _SizeFalloff: 0.313
+    - _SizeFalloff: 0.346
     - _Smoothness: 0
     - _SmoothnessSource: 0
     - _SmoothnessTextureChannel: 0
@@ -208,17 +208,17 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 0}
+    - _BaseColor: {r: 0.8679245, g: 0.6918832, b: 0.6918832, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0.1280252, g: 0.1509434, b: 0.1245995, a: 1}
     - _FaceFrontDirection: {r: 0, g: 0, b: 1, a: 0}
     - _FaceRightDirection: {r: 1, g: 0, b: 0, a: 0}
     - _HairSpecColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HalfToneColor: {r: 0, g: 0, b: 0, a: 1}
+    - _HalfToneColor: {r: 0, g: 0, b: 0, a: 0.934}
     - _HatchingColor: {r: 0, g: 0, b: 0, a: 0.235}
-    - _OutlineColor: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
+    - _OutlineColor: {r: 0.87058824, g: 0.4, b: 0.09019608, a: 1}
     - _OutlineDistancFade: {r: -2000, g: 1157.8945, b: 0, a: 0}
-    - _RimColor: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 0.644}
+    - _RimColor: {r: 0.9716981, g: 0.6554379, b: 0.6554379, a: 0.644}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 0}
     - _SpherizeNormalOrigin: {r: 0, g: 0, b: 0, a: 0}
