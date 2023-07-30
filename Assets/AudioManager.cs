@@ -26,6 +26,8 @@ namespace Life
         [HideInInspector]
         public FMOD.Studio.EventInstance dna_scan;
         [HideInInspector]
+        public FMOD.Studio.EventInstance quantum_ambient;
+        [HideInInspector]
         public int position_dronemusic = 0;
         [HideInInspector]
         public int position_cockpitambient = 0;
@@ -64,6 +66,7 @@ namespace Life
             drill_penetrating = FMODUnity.RuntimeManager.CreateInstance("event:/drill/drill_penetrating");
             drill_stop = FMODUnity.RuntimeManager.CreateInstance("event:/drill/drill_stop");
             dna_scan = FMODUnity.RuntimeManager.CreateInstance("event:/dna_scan");
+            quantum_ambient = FMODUnity.RuntimeManager.CreateInstance("event:/quantum/quantum_ambient");
         }
 
 
@@ -251,6 +254,32 @@ namespace Life
         public void PlayFootstep()
         {
             FMODUnity.RuntimeManager.PlayOneShot("event:/player_footsteps", transform.position);
+        }
+
+        //QUANTUM - might be used for sth else
+
+        //Start quantum ambient - basically on start
+        public void QuantumAmbientPlay()
+        {
+            quantum_ambient.start();
+        }
+
+        //Stop quantum ambient - rather useless, but just in case
+        public void QuantumAmbientStop()
+        {
+            quantum_ambient.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+
+        //Quantum error
+        public void QuantumError()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/quantum/quantum_error");
+        }
+
+        //Quantum success
+        public void QuantumSuccess()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/quantum/quantum_success");
         }
 
         //MAIN MENU

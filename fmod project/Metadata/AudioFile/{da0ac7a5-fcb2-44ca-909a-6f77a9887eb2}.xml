@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{da0ac7a5-fcb2-44ca-909a-6f77a9887eb2}">
+		<property name="assetPath">
+			<value>SX_Quantum/SX_Quantum_Error.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.7603174603174603</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{843883a1-7778-4660-9afa-e89bddcd58d6}</destination>
+		</relationship>
+	</object>
+</objects>
