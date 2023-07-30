@@ -3219,6 +3219,7 @@ GameObject:
   - component: {fileID: 7026892469615194140}
   - component: {fileID: 7349583186186021013}
   - component: {fileID: 3570767837867736693}
+  - component: {fileID: 2835491056857599595}
   m_Layer: 5
   m_Name: Worldspace UI Canvas
   m_TagString: Untagged
@@ -3345,6 +3346,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 3638181226417198891}
+--- !u!114 &2835491056857599595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4897687193771250678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af6bb51e86643f7b3bc5ce148d04e42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5432590691777334542
 GameObject:
   m_ObjectHideFlags: 0

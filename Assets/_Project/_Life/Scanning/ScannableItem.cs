@@ -13,8 +13,9 @@ namespace Life.Scanning
         public void ScanComplete()
         {
             _specimen.HandleScanned();
+            CurrentSubject.Instance.Specimen = _specimen;
         }
-        
+
         public void Focus()
         {
             OnFocus?.Invoke(this);

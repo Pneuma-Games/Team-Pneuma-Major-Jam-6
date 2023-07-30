@@ -13,6 +13,11 @@ namespace Life
                 player.gameObject.SetActive(true);
                 this.gameObject.SetActive(false);
             }
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                TransportSystem.TransportSystem.DropItem();
+            }
         }
     }
 }

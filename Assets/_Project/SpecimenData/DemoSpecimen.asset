@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: DemoSpecimen
   m_EditorClassIdentifier: 
   Name: Specimenus Maximus
+  SpecimenId: 1002
+  Color: 1
   RequiresDrilling: 1
   RequiresDNA: 0
-  Dangerous: 0
+  Toxic: 0
+  Volatile: 0
   DrillLube: 1
   DrillRpm: 3000

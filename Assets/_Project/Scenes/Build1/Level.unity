@@ -1104,10 +1104,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 668294709245992465, guid: 9475cc6ae8aeace4f8c47a425622a38e, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 668294709245992465, guid: 9475cc6ae8aeace4f8c47a425622a38e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -105.852
       objectReference: {fileID: 0}
@@ -1147,53 +1143,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 702812677964454878, guid: 9475cc6ae8aeace4f8c47a425622a38e, type: 3}
-      propertyPath: _castRadius
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 702812677964454878, guid: 9475cc6ae8aeace4f8c47a425622a38e, type: 3}
-      propertyPath: _drawDebugUI
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 702812677964454878, guid: 9475cc6ae8aeace4f8c47a425622a38e, type: 3}
-      propertyPath: _interactionRange
-      value: 1.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1024312245291801429, guid: 9475cc6ae8aeace4f8c47a425622a38e, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1024312245291801429, guid: 9475cc6ae8aeace4f8c47a425622a38e, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2400387425913498922, guid: 9475cc6ae8aeace4f8c47a425622a38e, type: 3}
-      propertyPath: m_Color.a
-      value: 0.4627451
-      objectReference: {fileID: 0}
-    - target: {fileID: 2400387425913498922, guid: 9475cc6ae8aeace4f8c47a425622a38e, type: 3}
-      propertyPath: m_Color.b
-      value: 0.37148458
-      objectReference: {fileID: 0}
-    - target: {fileID: 2400387425913498922, guid: 9475cc6ae8aeace4f8c47a425622a38e, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2400387425913498922, guid: 9475cc6ae8aeace4f8c47a425622a38e, type: 3}
-      propertyPath: m_Color.r
-      value: 0.6422297
-      objectReference: {fileID: 0}
-    - target: {fileID: 2840660337476494404, guid: 9475cc6ae8aeace4f8c47a425622a38e, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6015932001428480378, guid: 9475cc6ae8aeace4f8c47a425622a38e, type: 3}
       propertyPath: m_Name
       value: '[[ DronePlayer ]]'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6015932001428480378, guid: 9475cc6ae8aeace4f8c47a425622a38e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

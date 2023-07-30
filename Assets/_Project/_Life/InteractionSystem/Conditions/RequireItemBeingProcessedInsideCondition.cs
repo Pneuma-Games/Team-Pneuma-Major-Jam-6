@@ -18,14 +18,14 @@ namespace Life.InteractionSystem
             {
                 if (specimen.SpecimenProgress.Stored)
                 {
-                    return !_negate;
+                    return _negate;
                 }
 
-                return _negate;
+                return !_negate;
             }
             else
             {
-                return !_negate;
+                return _negate;
             }
         }
 
@@ -34,7 +34,7 @@ namespace Life.InteractionSystem
             
             if (_negate)
             {
-                return "Requires no item to be processed in the lab.";
+                return "Cannot use when lab is processing an item.";
             }
             else
             {

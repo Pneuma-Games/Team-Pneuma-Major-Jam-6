@@ -22,6 +22,7 @@ namespace Life
         {
             DOTween.Kill(_cGroup, false);
             _cGroup.DOFade(0.0f, .33f);
+            SetLostWarning(false);
         }
 
         public void SetProgress(float progress)

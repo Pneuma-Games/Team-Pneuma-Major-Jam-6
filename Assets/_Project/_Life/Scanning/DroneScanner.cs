@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Life.Scanning
@@ -18,6 +17,7 @@ namespace Life.Scanning
         {
             ScannableItem.OnFocus += ItemFocusHandler;
             ScannableItem.OnFocusLost += ItemFocusLostHandler;
+            _ui.SetLostWarning(false);
         }
 
         private void OnDisable()
@@ -28,6 +28,7 @@ namespace Life.Scanning
 
         private void ItemFocusLostHandler(ScannableItem obj)
         {
+            if (_currentFocus == null) return;
             _focusLostTimer = _focusLostTimeToReset;
             _inProgress = false;
             _ui.SetLostWarning(true);
@@ -65,6 +66,8 @@ namespace Life.Scanning
                 if (_progress >= 1.0f)
                 {
                     _inProgress = false;
+                    _progress = 0f;
+                    _ui.DisableScan();
                     _currentFocus.ScanComplete();
                     _currentFocus = null;
                 }
@@ -75,6 +78,7 @@ namespace Life.Scanning
                 _focusLostTimer -= Time.deltaTime;
                 if (_focusLostTimer <= 0)
                 {
+                    _progress = 0f;
                     _ui.SetProgress(0);
                     _ui.DisableScan();
                     _currentFocus = null;
