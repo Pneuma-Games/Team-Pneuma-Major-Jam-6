@@ -18,6 +18,9 @@ namespace Life
         public bool Volatile;
         public bool DrillLube;
         public int DrillRpm;
+        public int DbKey;
+        public string BinarySequence;
+        public int SequenceDecoded;
     }
 
     [Serializable]
