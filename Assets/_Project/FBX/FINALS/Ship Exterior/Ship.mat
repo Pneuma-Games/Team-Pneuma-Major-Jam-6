@@ -7,22 +7,24 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnvironmentShader
+  m_Name: Ship
   m_Shader: {fileID: 4800000, guid: e88aeddd2ef1f934d805981244872e27, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _EMISSION
   - _HALFTONESHAPE_DOT
+  - _NORMALMAP
   - _OUTLINE
   - _RECEIVE_SHADOWS_OFF
   - _RIMLIGHTING_ON
-  - _SPECULAR_COLOR
+  - _SPECGLOSSMAP
   m_InvalidKeywords:
   - _OVERRIDESHADOWCOLOR_ON
   - _RECEIVESHADOWS_OFF
   - _SPECULARHIGHLIGHTS_OFF
   - _STEPVIARAMPTEXTURE_ON
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2050
@@ -34,11 +36,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 1ceccf204e182d74d924d868db690026, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: a257f5b0e1d22af47b2dca3b6c7b7428, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -58,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 12c969022c55f1144b32be81efea9a32, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FaceShadowMap:
@@ -82,7 +84,7 @@ Material:
         m_Scale: {x: 15, y: 15}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 1ceccf204e182d74d924d868db690026, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -102,7 +104,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 77278c3c28ec2084daf550d4d6bb979d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularClipMask:
@@ -176,15 +178,15 @@ Material:
     - _OcclusionStrength: 1
     - _OutlineEnabled: 1
     - _OutlineMode: 0
-    - _OutlineWidth: 9.2
+    - _OutlineWidth: 7.48
     - _OverrideShadowColor: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 0
     - _RimEnabled: 1
     - _RimLightAlign: 0.13
-    - _RimLightSmoothness: 0.037
-    - _RimPower: 0.324
+    - _RimLightSmoothness: 0
+    - _RimPower: 0.328
     - _Shininess: 0
     - _SizeFalloff: 0.346
     - _Smoothness: 0
@@ -208,17 +210,17 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.8679245, g: 0.6918832, b: 0.6918832, a: 0}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0.1280252, g: 0.1509434, b: 0.1245995, a: 1}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _FaceFrontDirection: {r: 0, g: 0, b: 1, a: 0}
     - _FaceRightDirection: {r: 1, g: 0, b: 0, a: 0}
     - _HairSpecColor: {r: 0, g: 0, b: 0, a: 1}
     - _HalfToneColor: {r: 0, g: 0, b: 0, a: 0.934}
     - _HatchingColor: {r: 0, g: 0, b: 0, a: 0.235}
-    - _OutlineColor: {r: 0.87058824, g: 0.4, b: 0.09019608, a: 1}
+    - _OutlineColor: {r: 0.5188679, g: 0.19261286, b: 0.13461196, a: 1}
     - _OutlineDistancFade: {r: -2000, g: 1157.8945, b: 0, a: 0}
-    - _RimColor: {r: 0.9716981, g: 0.6554379, b: 0.6554379, a: 0.644}
+    - _RimColor: {r: 0.8207547, g: 0.23630668, b: 0.08904416, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 0}
     - _SpherizeNormalOrigin: {r: 0, g: 0, b: 0, a: 0}
