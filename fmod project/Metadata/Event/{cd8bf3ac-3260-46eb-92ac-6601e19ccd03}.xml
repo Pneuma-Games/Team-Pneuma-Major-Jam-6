@@ -180,13 +180,13 @@
 	<object class="SpatialiserEffect" id="{cf1d3fd7-3978-4c13-bb3b-a1eb655232b0}" />
 	<object class="AutomationPoint" id="{a164d1f0-e5f5-40a4-b149-e51e64401853}">
 		<property name="position">
-			<value>1.5</value>
+			<value>2.1047320241725584</value>
 		</property>
 		<property name="value">
 			<value>1</value>
 		</property>
 		<property name="curveShape">
-			<value>0.25471893</value>
+			<value>0.0221813172</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{ac4739e4-f4a4-4308-ae44-21941a801fbb}">

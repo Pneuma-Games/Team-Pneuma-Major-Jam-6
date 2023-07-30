@@ -2,192 +2,298 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+namespace Life
 {
-    [HideInInspector]
-    public FMOD.Studio.EventInstance cockpit_ambient;
-    [HideInInspector]
-    public FMOD.Studio.EventInstance cockpit_music;
-    [HideInInspector]
-    public FMOD.Studio.EventInstance drone_ambient;
-    [HideInInspector]
-    public FMOD.Studio.EventInstance drone_scan;
-    [HideInInspector]
-    public FMOD.Studio.EventInstance drone_music;
-    [HideInInspector]
-    public FMOD.Studio.EventInstance drill_start;
-    [HideInInspector]
-    public FMOD.Studio.EventInstance drill_penetrating;
-    [HideInInspector]
-    public FMOD.Studio.EventInstance drill_stop;
-    [HideInInspector]
-    public int position_dronemusic = 0;
-    [HideInInspector]
-    public int position_cockpitambient = 0;
-    [HideInInspector]
-    public int position_cockpitmusic = 0;
-
-    // Start is called before the first frame update
-    void Start()
+    [DefaultExecutionOrder(-500)]
+    public class AudioManager : MonoBehaviour
     {
-        cockpit_ambient = FMODUnity.RuntimeManager.CreateInstance("event:/ambient_cockpit");
-        cockpit_music = FMODUnity.RuntimeManager.CreateInstance("event:/music_cockpit");
-        drone_ambient = FMODUnity.RuntimeManager.CreateInstance("event:/drone/drone_ambient");
-        drone_scan = FMODUnity.RuntimeManager.CreateInstance("event:/drone/drone_scanspecimen");
-        drone_music = FMODUnity.RuntimeManager.CreateInstance("event:/drone/drone_musicloop");
-        drill_start = FMODUnity.RuntimeManager.CreateInstance("event:/drill/drill_start");
-        drill_penetrating = FMODUnity.RuntimeManager.CreateInstance("event:/drill/drill_penetrating");
-        drill_stop = FMODUnity.RuntimeManager.CreateInstance("event:/drill/drill_stop");
+        [HideInInspector]
+        public FMOD.Studio.EventInstance cockpit_ambient;
+        [HideInInspector]
+        public FMOD.Studio.EventInstance cockpit_music;
+        [HideInInspector]
+        public FMOD.Studio.EventInstance drone_ambient;
+        [HideInInspector]
+        public FMOD.Studio.EventInstance drone_scan;
+        [HideInInspector]
+        public FMOD.Studio.EventInstance drone_music;
+        [HideInInspector]
+        public FMOD.Studio.EventInstance drill_start;
+        [HideInInspector]
+        public FMOD.Studio.EventInstance drill_penetrating;
+        [HideInInspector]
+        public FMOD.Studio.EventInstance drill_stop;
+        [HideInInspector]
+        public FMOD.Studio.EventInstance dna_scan;
+        [HideInInspector]
+        public int position_dronemusic = 0;
+        [HideInInspector]
+        public int position_cockpitambient = 0;
+        [HideInInspector]
+        public int position_cockpitmusic = 0;
+
+        //Mutes audio when tabbed out of the game - has to be invoked on script that detects that action, then passes true/false to this one
+        public void OnApplicationFocus(bool focus)
+        {
+            if (FMODUnity.RuntimeManager.StudioSystem.isValid())
+            {
+                FMODUnity.RuntimeManager.PauseAllEvents(!focus);
+
+                if (!focus)
+                {
+                    FMODUnity.RuntimeManager.CoreSystem.mixerSuspend();
+                }
+                else
+                {
+                    FMODUnity.RuntimeManager.CoreSystem.mixerResume();
+                }
+            }
+        }
+
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setListenerWeight(1, 0f); //Temporarily disables drone audio listener on start
+            cockpit_ambient = FMODUnity.RuntimeManager.CreateInstance("event:/ambient_cockpit");
+            cockpit_music = FMODUnity.RuntimeManager.CreateInstance("event:/music_cockpit");
+            drone_ambient = FMODUnity.RuntimeManager.CreateInstance("event:/drone/drone_ambient");
+            drone_scan = FMODUnity.RuntimeManager.CreateInstance("event:/drone/drone_scanspecimen");
+            drone_music = FMODUnity.RuntimeManager.CreateInstance("event:/drone/drone_musicloop");
+            drill_start = FMODUnity.RuntimeManager.CreateInstance("event:/drill/drill_start");
+            drill_penetrating = FMODUnity.RuntimeManager.CreateInstance("event:/drill/drill_penetrating");
+            drill_stop = FMODUnity.RuntimeManager.CreateInstance("event:/drill/drill_stop");
+            dna_scan = FMODUnity.RuntimeManager.CreateInstance("event:/dna_scan");
+        }
+
+
+        //COCKPIT EVENTS
+
+        //Play cockpit ambience and music loop (on start and after exiting drone)
+        public void PlayCockpitAmbient()
+        {
+            cockpit_ambient.setTimelinePosition(position_cockpitambient);
+            cockpit_ambient.start();
+            cockpit_music.setTimelinePosition(position_cockpitmusic);
+            cockpit_music.start();
+        }
+
+        //Stop cockpit ambience and music loop
+        public void StopCockpitAmbient()
+        {
+            cockpit_ambient.getTimelinePosition(out position_cockpitambient);
+            cockpit_ambient.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            cockpit_music.getTimelinePosition(out position_cockpitmusic);
+            cockpit_music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+        //DRONE EVENTS
+
+        // Plays the drone propeller sound after entering the feed and music loop
+        public void PlayDroneAmbient()
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setListenerWeight(1, 1f);
+            FMODUnity.RuntimeManager.StudioSystem.setListenerWeight(0, 0f);
+            drone_ambient.start();
+            drone_music.setTimelinePosition(position_dronemusic);
+            drone_music.start();
+        }
+        //Get the drone speed value and use it as a parameter
+        public void UpdateDroneSpeed(float spd)
+        {
+            drone_ambient.setParameterByName("drone_speed", spd);
+        }
+
+        // Stops the drone propeller sound after exiting the feed and music loop
+        public void StopDroneAmbient()
+        {
+            drone_music.getTimelinePosition(out position_dronemusic);
+            drone_music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+
+        // Enter drone feed one-shot sfx
+        public void EnterDroneFeed()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/drone/drone_enterfeed");
+        }
+
+        // Exit drone feed one-shot sfx
+        public void ExitDroneFeed()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/drone/drone_exitfeed");
+        }
+
+        // Select specimen
+        public void DroneSelect()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/drone/drone_selectspecimen");
+        }
+
+        //Fail sound for drone
+        public void DroneFail()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/drone/drone_fail");
+        }
+
+        //SUCCess sound for drone
+        public void DroneSuccess()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/drone/drone_success");
+        }
+
+        //Scan start
+        public void ScanStart()
+        {
+            drone_scan.start();
+        }
+        //Pause the scan (interrupted by looking away)
+        public void ScanPause()
+        {
+            drone_scan.setPaused(true);
+        }
+
+        //Resume scan
+        public void ScanResume()
+        {
+            drone_scan.setPaused(false);
+        }
+
+        //Scan end (both success and fail)
+        public void ScanEnd()
+        {
+            drone_scan.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+
+        //Collect specimen/sample with drone
+        public void CollectSample()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/drone/drone_collectsample");
+        }
+
+        //Release specimen/sample into the bin/receptacle - THIS MUST BE INVOKED ON THE SCRIPT ATTACHED TO THE BIN
+        public void ReleaseSample()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/drone/drone_releasesample", transform.position);
+        }
+
+        //DRILL EVENTS - THOSE ARE 3D SFX'S SO INVOKE ON THE SCRIPT ATTACHED TO A DRILL
+
+        //Drill start
+        public void DrillStart()
+        {
+            drill_start.start();
+            drill_penetrating.start();
+        }
+
+        //Drill stop
+        public void DrillStop()
+        {
+            drill_start.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            drill_penetrating.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            drill_stop.start();
+        }
+
+        //INTERACTABLES
+
+        //Pick up sample (use this for example on input bin when retrieving a sample from the drone)
+        public void Pickup()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/int/int_pickup");
+        }
+
+        //Put down sample (use this for example when storing a sample)
+
+        public void PutDown()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/int/int_putdown");
+        }
+
+        //UI - beeps and boops for the control panels (drill, receptacle)
+
+        //UI Browse - play this when highlighting a button with a mouse cursor
+        public void UIbrowse()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/ui/ui_browse");
+        }
+
+        //UI Confirm - play this when confirming an action (start drilling, destroy/pass the sample to the drill on the receptacle panel)
+        public void UIconfirm()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/ui/ui_confirm");
+        }
+
+        //UI Start - start drilling (it's a 2d SFX so it can't be placed in the DrillStart function since it plays 3d sfx's)
+        public void UIstartdrill()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/ui/ui_drillstart");
+        }
+
+        //UI Press - pressing an arrow/lubrication on (it's not the same as Uiconfirm)
+        public void UIpress()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/ui/ui_press");
+        }
+
+        //DNA
+
+        //DNA Scan start
+        public void DnaScanStart()
+        {
+            dna_scan.start();
+        }
+
+        //DNA Scan stop
+        public void DnaScanStop()
+        {
+            dna_scan.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+
+        //Play footstep
+        public void PlayFootstep()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/player_footsteps", transform.position);
+        }
+
+        //MAIN MENU
+
+        //Browse - highlighting option with a cursor
+        public void MMbrowse()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/mainmenu/mainmenu_browse");
+        }
+
+        //Select an option (clicking it)
+        public void MMselect()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/mainmenu/mainmenu_select");
+        }
+
+        //Launch game from menu
+        public void MMlaunchgame()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/mainmenu/mainmenu_startgame");
+        }
+
+        //GAME OVER
+
+        //Victory
+        public void VictorySound()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/gameover/victory");
+        }
+
+        //Defeat
+        public void DefeatSound()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/gameover/defeat");
+        }
+
+
+        //R E S E A R C H E R voice-over only
+
+        public void ResearcherVO()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/vo_researcher");
+
+        }
     }
-    //COCKPIT EVENTS
-
-    //Play cockpit ambience and music loop (on start and after exiting drone)
-    public void PlayCockpitAmbient()
-    {
-        cockpit_ambient.setTimelinePosition(position_cockpitambient);
-        cockpit_ambient.start();
-        cockpit_music.setTimelinePosition(position_cockpitmusic);
-        cockpit_music.start();
-    }
-
-    //Stop cockpit ambience and music loop
-    public void StopCockpitAmbient()
-    {
-        cockpit_ambient.getTimelinePosition(out position_cockpitambient);
-        cockpit_ambient.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        cockpit_music.getTimelinePosition(out position_cockpitmusic);
-        cockpit_music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-    }
-    //DRONE EVENTS
-
-    // Plays the drone propeller sound after entering the feed and music loop
-    public void PlayDroneAmbient()
-    {
-        drone_ambient.start();
-        drone_music.setTimelinePosition(position_dronemusic);
-        drone_music.start();
-    }
-
-    // Stops the drone propeller sound after exiting the feed and music loop
-    public void StopDroneAmbient()
-    {
-        //drone_ambient.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        //drone_music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        drone_music.getTimelinePosition(out position_dronemusic);
-        drone_music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-    }
-
-    // Enter drone feed one-shot sfx
-    public void EnterDroneFeed()
-    {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/drone/drone_enterfeed");
-    }
-
-    // Exit drone feed one-shot sfx
-    public void ExitDroneFeed()
-    {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/drone/drone_exitfeed");
-    }
-
-    // Select specimen
-    public void DroneSelect()
-    {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/drone/drone_selectspecimen");
-    }
-
-    //Fail sound for drone
-    public void DroneFail()
-    {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/drone/drone_fail");
-    }
-
-    //SUCCess sound for drone
-    public void DroneSuccess()
-    {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/drone/drone_success");
-    }
-
-    //Scan start
-    public void ScanStart()
-    {
-        drone_scan.start();
-    }
-
-    //Scan end
-    public void ScanEnd()
-    {
-        drone_scan.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-    }
-
-    //Collect specimen/sample with drone
-    public void CollectSample()
-    {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/drone/drone_collectsample");
-    }
-
-    //Release specimen/sample into the bin/receptacle - THIS MUST BE INVOKED ON THE SCRIPT ATTACHED TO THE BIN
-    public void ReleaseSample()
-    {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/drone/drone_releasesample", transform.position);
-    }
-
-    //DRILL EVENTS - THOSE ARE 3D SFX'S SO INVOKE ON THE SCRIPT ATTACHED TO A DRILL
-
-    //Drill start
-    public void DrillStart()
-    {
-        drill_start.start();
-        drill_penetrating.start();
-    }
-
-    //Drill stop
-    public void DrillStop()
-    {
-        drill_start.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        drill_penetrating.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        drill_stop.start();
-    }
-
-    //INTERACTABLES
-
-    //Pick up sample (use this for example on input bin when retrieving a sample from the drone)
-    public void Pickup()
-    {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/int/int_pickup");
-    }
-
-    //Put down sample (use this for example when storing a sample)
-
-    public void PutDown()
-    {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/int/int_putdown");
-    }
-
-    //UI - beeps and boops for the control panels (drill, receptacle)
-
-    //UI Browse - play this when highlighting a button with a mouse cursor
-    public void UIbrowse()
-    {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/ui/ui_browse");
-    }
-
-    //UI Confirm - play this when confirming an action (start drilling, destroy/pass the sample to the drill on the receptacle panel)
-    public void UIconfirm()
-    {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/ui/ui_confirm");
-    }
-
-    //UI Start - start drilling (it's a 2d SFX so it can't be placed in the DrillStart function since it plays 3d sfx's)
-    public void UIstartdrill()
-    {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/ui/ui_drillstart");
-    }
-
-    //UI Press - pressing an arrow/lubrication on (it's not the same as Uiconfirm)
-
-    public void UIpress()
-    {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/ui/ui_press");
-    }
-
 }
