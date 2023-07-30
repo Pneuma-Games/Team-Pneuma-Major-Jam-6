@@ -251,8 +251,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9e70bd52c1a2bb84cb48b90bfe8dd45d, type: 2}
-  m_sharedMaterial: {fileID: -7246829884802490215, guid: 9e70bd52c1a2bb84cb48b90bfe8dd45d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -385,8 +385,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: _________
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9e70bd52c1a2bb84cb48b90bfe8dd45d, type: 2}
-  m_sharedMaterial: {fileID: -7246829884802490215, guid: 9e70bd52c1a2bb84cb48b90bfe8dd45d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -889,7 +889,7 @@ GameObject:
   - component: {fileID: 3454727840772286052}
   - component: {fileID: 5042931506809519241}
   m_Layer: 5
-  m_Name: DNAUi
+  m_Name: DNA UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1605,8 +1605,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '|'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9e70bd52c1a2bb84cb48b90bfe8dd45d, type: 2}
-  m_sharedMaterial: {fileID: -7246829884802490215, guid: 9e70bd52c1a2bb84cb48b90bfe8dd45d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
