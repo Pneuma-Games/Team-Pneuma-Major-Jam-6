@@ -21,6 +21,7 @@ namespace Life
         public int DbKey;
         public string BinarySequence;
         public int SequenceDecoded;
+        public string QuantumKey;
         public Sprite Image;
     }
 

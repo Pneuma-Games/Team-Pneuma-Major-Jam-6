@@ -16,8 +16,12 @@ MonoBehaviour:
   SpecimenId: 1002
   Color: 1
   RequiresDrilling: 1
-  RequiresDNA: 0
+  RequiresDNA: 1
   Toxic: 0
   Volatile: 0
   DrillLube: 1
   DrillRpm: 3000
+  DbKey: 318
+  BinarySequence: 
+  SequenceDecoded: 666
+  Image: {fileID: 0}

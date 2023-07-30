@@ -13,5 +13,5 @@ namespace Life
         {
             Instance = this;
         }
-    }
+   }
 }

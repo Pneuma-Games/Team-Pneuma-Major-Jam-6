@@ -63,7 +63,7 @@ namespace Life.InteractionSystem
             
             if (Input.GetKeyDown(_activationKey) && _currentInteractable && _currentInteractable.ConditionsMet)
             {
-                Debug.Log($"Interacting with {_currentInteractable.gameObject.name}");
+                //Debug.Log($"Interacting with {_currentInteractable.gameObject.name}");
                 var interactable = _currentInteractable;
                 OnInteractableDeselectedEvent?.Invoke();
                 _currentInteractable = null;
