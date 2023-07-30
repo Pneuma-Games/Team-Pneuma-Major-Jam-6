@@ -8,5 +8,10 @@ namespace Life.InteractionSystem
         {
             return TransportSystem.TransportSystem.ItemStored;
         }
+
+        public string GetErrorMessage()
+        {
+            return "Requires an item to be held.";
+        }
     }
 }

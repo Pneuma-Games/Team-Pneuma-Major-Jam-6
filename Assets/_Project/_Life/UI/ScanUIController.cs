@@ -26,6 +26,7 @@ namespace Life
 
         public void SetProgress(float progress)
         {
+            progress = Mathf.Clamp01(progress);
             _progressIndicator.fillAmount = progress;
             _percentage.SetText(Mathf.FloorToInt(progress * 100).ToString()+ " %");
         }
