@@ -6,7 +6,7 @@ namespace Life
     {
         protected override void OnExecute()
         {
-            agent.MoveItemToInside();
+            agent.PassItemToChute();
             EndAction();
         }
     }

@@ -39,5 +39,17 @@ namespace Life.InteractionSystem
         {
             _conditions = GetComponents<IInteractionCondition>();
         }
+
+        public string GetErrorMessage()
+        {
+            foreach(var condition in _conditions)
+            {
+                if (!condition.CanInteract())
+                {
+                    return condition.GetErrorMessage();
+                }
+            }
+            return string.Empty;
+        }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Life.InteractionSystem
 {
@@ -8,6 +9,9 @@ namespace Life.InteractionSystem
     /// </summary>
     public class InPlaceInteractionExample : MonoBehaviour, IInPlaceInteraction
     {
+        public UnityEvent OnGainedControl;
+        public UnityEvent OnReturnedControl;
+        
         public Vector3 TargetCameraPosition { get; private set; }
         public Quaternion TargetCameraRotation { get; private set; }
         public float TargetCameraFOV { get; private set; }
@@ -22,6 +26,10 @@ namespace Life.InteractionSystem
         public void TransferControl()
         {
             _inControl = true;
+            WorldUI.Instance.Canvas.worldCamera = StaticCamera;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            OnGainedControl?.Invoke();
         }
         
         /// <summary>
@@ -33,6 +41,8 @@ namespace Life.InteractionSystem
         {
             GetComponent<ControlTransferTransition>().TransferToPlayer();
             _inControl = false;
+            WorldUI.Instance.Canvas.worldCamera = null;
+            OnReturnedControl?.Invoke();
         }
 
         private void Update()
