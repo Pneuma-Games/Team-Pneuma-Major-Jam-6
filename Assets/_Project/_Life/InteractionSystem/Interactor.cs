@@ -6,7 +6,7 @@ namespace Life.InteractionSystem
     public class Interactor : MonoBehaviour
     {
         // Hooks for UI to display interactable name and flavour text
-        public static Action<string, string> OnInteractableSelectedEvent;
+        public static Action<string, string, string> OnInteractableSelectedEvent;
         public static Action OnInteractableDeselectedEvent;
         
         [SerializeField] private LayerMask _blockMask;
@@ -65,6 +65,7 @@ namespace Life.InteractionSystem
             {
                 Debug.Log($"Interacting with {_currentInteractable.gameObject.name}");
                 var interactable = _currentInteractable;
+                OnInteractableDeselectedEvent?.Invoke();
                 _currentInteractable = null;
                 interactable.Trigger();
                 _timer = _cooldown;
@@ -91,7 +92,7 @@ namespace Life.InteractionSystem
         private void HandleSelect(Interactable itr)
         {
             _currentInteractable = itr;
-            OnInteractableSelectedEvent?.Invoke(_currentInteractable.Name, _currentInteractable.FlavourText);
+            OnInteractableSelectedEvent?.Invoke(_currentInteractable.Name, _currentInteractable.FlavourText, _currentInteractable.GetErrorMessage());
             _currentInteractable.Select();
         }
 
