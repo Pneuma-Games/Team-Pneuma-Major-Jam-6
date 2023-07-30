@@ -668,7 +668,7 @@ MonoBehaviour:
   _accel: 450
   _maxForwardSpeed: 3.5
   _gravityFactor: 12
-  _decayRate: 0.03
+  _decayRate: 0.012
   _decayRateMidair: 0.995
   _midairAccelFactor: 0.04
   _surfaceDetector: {fileID: 1978472223332562096}
@@ -695,7 +695,7 @@ CharacterController:
   m_Height: 1.1
   m_Radius: 0.33
   m_SlopeLimit: 80
-  m_StepOffset: 0.3
+  m_StepOffset: 0.05
   m_SkinWidth: 0.02
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.51, z: 0}
