@@ -1,10 +1,17 @@
+using System;
 using System.Collections;
+using Life;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class SpecimenPanel : MonoBehaviour
 {
+    public Action OnThreeStrikes = delegate {  }; 
+    
+    public static SpecimenPanel Instance;
+    
     [SerializeField] private GameObject[] strikes;
     [SerializeField] private GameObject specimenImage;
     [SerializeField] private GameObject specimenIndicator;
@@ -13,14 +20,50 @@ public class SpecimenPanel : MonoBehaviour
     [SerializeField] private float minIDDisplayTime = 0.3f;
     [SerializeField] private float maxIDDisplayTime = 0.7f;
 
+    private int _strikes;
+
     //For Testing
     //[SerializeField] private Sprite image;
     private void Start()
     {
-        //SetSpecimenImage(image);
-        //SetSpecimenIndicatorColor(Color.blue);
-        //StartCoroutine(SetSpecimenID("test string"));
-        //SetStrikeCount(2);
+        Instance = this;
+        CurrentSubject.OnSubjectChanged += HandleNewSubject;
+    }
+
+    private void OnDestroy()
+    {
+        CurrentSubject.OnSubjectChanged -= HandleNewSubject;
+    }
+
+    private void HandleNewSubject()
+    {
+        if (CurrentSubject.Instance.Specimen == null)
+        {
+            SetSpecimenImage(null);
+            SetSpecimenIndicatorColor(Color.white);
+            StartCoroutine(SetSpecimenID(""));
+            return;
+        }
+
+        Color color;
+        switch (CurrentSubject.Instance.Specimen.SpecimenData.Color)
+        {
+            case SpecimenColor.Red:
+                color = Color.red;
+                break;
+            case SpecimenColor.Yellow:
+                color = Color.yellow;
+                break;
+            case SpecimenColor.Blue:
+                color = Color.blue;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        
+        SetSpecimenImage(CurrentSubject.Instance.Specimen.SpecimenData.Image);
+        SetSpecimenIndicatorColor(color);
+        StartCoroutine(SetSpecimenID(CurrentSubject.Instance.Specimen.SpecimenData.SpecimenId.ToString()));
     }
 
     public void SetSpecimenImage(Sprite newImage)
@@ -49,16 +92,19 @@ public class SpecimenPanel : MonoBehaviour
         specimenImage.SetActive(!string.IsNullOrEmpty(newID));
     }
     
-    public void SetStrikeCount(int count)
+    public void IncreaseStrikes()
     {
+        _strikes++;
         foreach (var s in strikes)
         {
             s.SetActive(false);
         }
 
-        for (var i = 0; i < (count <= strikes.Length ? count : strikes.Length); i++)
+        for (var i = 0; i < (_strikes <= strikes.Length ? _strikes : strikes.Length); i++)
         {
             strikes[i].SetActive(true);
         }
+        
+        if (_strikes == 3) OnThreeStrikes?.Invoke();
     }
 }

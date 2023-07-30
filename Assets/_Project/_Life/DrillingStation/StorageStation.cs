@@ -15,6 +15,7 @@ namespace Life
             Debug.Log("Storing item in slot " + idx + ".");
             s.SpecimenProgress.Stored = true;
             _specimens[idx] = s;
+            CurrentSubject.Instance.Specimen = null;
             CheckVictoryCondition();
         }
 

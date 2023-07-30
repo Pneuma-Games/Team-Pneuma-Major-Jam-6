@@ -18,10 +18,11 @@ MonoBehaviour:
   RequiresDrilling: 1
   RequiresDNA: 1
   Toxic: 0
-  Volatile: 0
+  Volatile: 1
   DrillLube: 1
   DrillRpm: 3000
   DbKey: 318
   BinarySequence: 
   SequenceDecoded: 666
+  QuantumKey: 
   Image: {fileID: 0}
