@@ -796,6 +796,7 @@ GameObject:
   - component: {fileID: 8179868346571761219}
   - component: {fileID: 1637616002546293243}
   - component: {fileID: 6015043561206701342}
+  - component: {fileID: 5623762002900520510}
   - component: {fileID: 41713632648788434}
   m_Layer: 0
   m_Name: DropZone
@@ -875,6 +876,19 @@ MonoBehaviour:
         m_CallState: 2
   _name: Receptacle
   _flavourText: Press F to deposit sample
+--- !u!114 &5623762002900520510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3673680178742893950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f895a2234b8744b49a24842255c3b1e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _negate: 1
 --- !u!114 &41713632648788434
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,5 +12,11 @@ namespace Life.InteractionSystem
             if (_negate) return !_station.ProcessingItem;
             return _station.ProcessingItem;
         }
+
+        public string GetErrorMessage()
+        {
+            if (_negate) return "Requires no item to be in the station.";
+            return "Requires an item to be in the station.";
+        }
     }
 }

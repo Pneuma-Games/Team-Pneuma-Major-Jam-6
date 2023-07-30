@@ -1,5 +1,111 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1098802358373179788
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6211909460723277761}
+  - component: {fileID: 9067624147478978473}
+  - component: {fileID: 6116724619651831656}
+  - component: {fileID: 8602034511411384615}
+  m_Layer: 0
+  m_Name: ScanInteraction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6211909460723277761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098802358373179788}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 516.675, y: -495.44998, z: 217.23}
+  m_LocalScale: {x: 1.6500001, y: 1.6500001, z: 1.6500001}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2825393087763500903}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9067624147478978473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098802358373179788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22377fe9d4ec47908cb82ef97eefd96f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6116724619651831656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098802358373179788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 849244a4e00255f469ee61850b77c88f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteractableSelectedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8602034511411384615}
+        m_TargetAssemblyTypeName: Life.Scanning.ScannableItem, Life
+        m_MethodName: Focus
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInteractableDeselectedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8602034511411384615}
+        m_TargetAssemblyTypeName: Life.Scanning.ScannableItem, Life
+        m_MethodName: FocusLost
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInteractableTriggeredEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _name: Scan subject
+  _flavourText: 
+--- !u!114 &8602034511411384615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098802358373179788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c25030af9544e5fbcaeefe49f1636ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _specimen: {fileID: 6023049943895427480}
 --- !u!1 &1826224929405748000
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,9 +120,6 @@ GameObject:
   - component: {fileID: 658535241252664281}
   - component: {fileID: 6633646800546716368}
   - component: {fileID: 6023049943895427480}
-  - component: {fileID: 2635590716463419730}
-  - component: {fileID: 2870561616043776396}
-  - component: {fileID: 61310612203062988}
   m_Layer: 0
   m_Name: DemoSpecimen
   m_TagString: Untagged
@@ -36,7 +139,9 @@ Transform:
   m_LocalPosition: {x: 5.725, y: -9.863, z: 3.954}
   m_LocalScale: {x: 0.33, y: 0.33, z: 0.33}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6466182269279836411}
+  - {fileID: 6211909460723277761}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7599712344078946801
@@ -150,32 +255,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _specimenData: {fileID: 11400000, guid: 9701c601cd380f44db58d5ab74a6c58a, type: 2}
+  _scanInteraction: {fileID: 1098802358373179788}
+  _pickupInteraction: {fileID: 3059851012058601157}
   SpecimenProgress:
     Scanned: 0
+    Deposited: 0
     DrillComplete: 0
     DNAComplete: 0
     QuantumComplete: 0
     Stored: 0
     Destroyed: 0
---- !u!114 &2635590716463419730
+--- !u!1 &3059851012058601157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6466182269279836411}
+  - component: {fileID: 9150461709658896917}
+  - component: {fileID: 2654163721271240494}
+  - component: {fileID: 6314630247109224741}
+  m_Layer: 0
+  m_Name: TransportInteraction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6466182269279836411
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3059851012058601157}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 516.675, y: -495.44998, z: 217.23}
+  m_LocalScale: {x: 1.6500001, y: 1.6500001, z: 1.6500001}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2825393087763500903}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9150461709658896917
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1826224929405748000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22377fe9d4ec47908cb82ef97eefd96f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2870561616043776396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1826224929405748000}
+  m_GameObject: {fileID: 3059851012058601157}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 849244a4e00255f469ee61850b77c88f, type: 3}
@@ -190,8 +320,8 @@ MonoBehaviour:
   OnInteractableTriggeredEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2635590716463419730}
-        m_TargetAssemblyTypeName: Life.TransportSystem.TransportableBasic, Life
+      - m_Target: {fileID: 6314630247109224741}
+        m_TargetAssemblyTypeName: Life.TransportSystem.TransportableComplex, Life
         m_MethodName: StoreItemViaEvent
         m_Mode: 1
         m_Arguments:
@@ -204,15 +334,28 @@ MonoBehaviour:
         m_CallState: 2
   _name: Specimen
   _flavourText: Press F to pick up
---- !u!114 &61310612203062988
+--- !u!114 &2654163721271240494
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1826224929405748000}
+  m_GameObject: {fileID: 3059851012058601157}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23c171dcea0a4719b9cdf2a8ded58585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6314630247109224741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3059851012058601157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1e5590863aa47fca6c5eb39af13405d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rootGameObject: {fileID: 1826224929405748000}

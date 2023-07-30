@@ -8,5 +8,10 @@ namespace Life.InteractionSystem
         {
             return !TransportSystem.TransportSystem.ItemStored && TransportSystem.TransportSystem.TransporterAvailable;
         }
+
+        public string GetErrorMessage()
+        {
+            return "Requires no item to be held.";
+        }
     }
 }

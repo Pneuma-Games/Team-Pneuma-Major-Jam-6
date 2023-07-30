@@ -9,5 +9,10 @@ namespace Life.InteractionSystem
             return TransportSystem.TransportSystem.ItemStored &&
                    TransportSystem.TransportSystem.GetStoredSpecimenProgress().DrillComplete;
         }
+
+        public string GetErrorMessage()
+        {
+            return "Requires a drilled specimen to be held.";
+        }
     }
 }

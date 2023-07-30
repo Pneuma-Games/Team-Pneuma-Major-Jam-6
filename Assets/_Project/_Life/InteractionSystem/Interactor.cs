@@ -34,7 +34,7 @@ namespace Life.InteractionSystem
             var hit = Physics.SphereCast(tPos, _castRadius, t.forward, out _hitBuffer, _interactionRange, _blockMask, _queryTriggers);
             if (hit)
             {
-                var interactable = _hitBuffer.transform.gameObject.GetComponent<Interactable>();
+                var interactable = _hitBuffer.transform.gameObject.GetComponentInChildren<Interactable>();
                 if (!interactable && _currentInteractable)
                 {
                     HandleDeselect();
