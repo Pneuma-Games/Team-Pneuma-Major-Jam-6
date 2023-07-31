@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{f0f9c101-299e-416f-aae9-02fe8bd8e71e}">
+		<property name="assetPath">
+			<value>SX_Player_Footsteps/SX_Player_Footsteps-006.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.25696145124716552</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{843883a1-7778-4660-9afa-e89bddcd58d6}</destination>
+		</relationship>
+	</object>
+</objects>
