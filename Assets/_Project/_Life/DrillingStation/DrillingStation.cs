@@ -60,10 +60,17 @@ namespace Life
         private WaitForSeconds waitOne = new WaitForSeconds(1f);
         private IEnumerator DrillCoroutine()
         {
+            var spec = _item.GameObject.GetComponent<Specimen>();
+            if (spec.SpecimenData.Volatile)
+            {
+                FindObjectOfType<ExplosionSequence>().GoBoom();
+                yield break;
+            }
+            
             _working = true;
             _workTime = 0f;
             _ui.SetStatus("Working");
-            var progress = _item.GameObject.GetComponent<Specimen>().SpecimenProgress;
+            var progress = spec.SpecimenProgress;
             var result = VerifyDrill();
             if (result)
             {
@@ -72,6 +79,7 @@ namespace Life
             else
             {
                 progress.Destroyed = true;
+                SpecimenPanel.Instance.IncreaseStrikes();
             }
 
             while (_workTime < _drillTime)

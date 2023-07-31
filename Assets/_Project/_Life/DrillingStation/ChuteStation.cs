@@ -32,9 +32,16 @@ namespace Life
         public override void SpitOutItem()
         {
             var specimen = _item.GameObject.GetComponent<Specimen>();
+            if (specimen.SpecimenData.Volatile)
+            {
+                FindObjectOfType<ExplosionSequence>().GoBoom();
+                return;
+            }
+            
             if (specimen.SpecimenData.RequiresDrilling)
             {
                 specimen.SpecimenProgress.Destroyed = true;
+                SpecimenPanel.Instance.IncreaseStrikes();
             }
             base.SpitOutItem();
         }

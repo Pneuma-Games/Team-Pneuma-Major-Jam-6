@@ -54,6 +54,7 @@ namespace Life
             {
                 _ui.ShowError();
                 spc.SpecimenProgress.Destroyed = true;
+                SpecimenPanel.Instance.IncreaseStrikes();
             }
             _pickupZone.SetActive(true);
         }
