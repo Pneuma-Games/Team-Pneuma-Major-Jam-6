@@ -1,9 +1,14 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Life.Scanning
 {
     public class DroneScanner : MonoBehaviour
     {
+        public UnityEvent OnScanObject;
+        public UnityEvent OnScanPause;
+        public UnityEvent OnScanResume;
+        public UnityEvent OnScanStop;
         [SerializeField] private float _focusLostTimeToReset = 2.5f;
         [SerializeField] private float _scanPerSecond = 0.28f;
         [SerializeField] private ScanUIController _ui;
@@ -32,6 +37,7 @@ namespace Life.Scanning
             _focusLostTimer = _focusLostTimeToReset;
             _inProgress = false;
             _ui.SetLostWarning(true);
+            OnScanPause.Invoke();
         }
 
         private void ItemFocusHandler(ScannableItem obj)
@@ -45,6 +51,7 @@ namespace Life.Scanning
                 _focusLostTimer = -1;
                 _inProgress = true;
                 _ui.SetLostWarning(false);
+                OnScanResume.Invoke();
                 return;
             }
 
@@ -55,6 +62,7 @@ namespace Life.Scanning
 
             _currentFocus = obj;
             _inProgress = true;
+            OnScanObject.Invoke();
         }
 
         private void Update()
@@ -70,6 +78,7 @@ namespace Life.Scanning
                     _ui.DisableScan();
                     _currentFocus.ScanComplete();
                     _currentFocus = null;
+                    OnScanStop.Invoke();
                 }
             }
 

@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1849733592327523173}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78cfc2d29adf7804b8529560f5c7265e, type: 3}
+  m_Script: {fileID: 11500000, guid: c942b09a1190d834490d724ceff2d488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   position_dronemusic: 0

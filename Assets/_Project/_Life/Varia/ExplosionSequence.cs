@@ -1,11 +1,13 @@
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Life
 {
     public class ExplosionSequence : MonoBehaviour
     {
+        public UnityEvent OnDeath;
         public GameObject _cam1;
         public GameObject _cam2;
         public GameObject _cam3;
@@ -30,6 +32,7 @@ namespace Life
             }
             _player.SetActive(false);
             _drone.SetActive(false);
+            
             StartCoroutine(ExplosionSequenceCoroutine());
         }
 
@@ -45,6 +48,7 @@ namespace Life
             yield return new WaitForSeconds(1.0f);
             _boom.SetActive(true);
             yield return new WaitForSeconds(1.5f);
+            OnDeath.Invoke();
             _cGroup.DOFade(1.0f, 2.0f);
         }
     }

@@ -1,11 +1,14 @@
 using System.Collections;
 using Life.TransportSystem;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Life
 {
     public class DrillingStation : ProcessingStationBase
     {
+        public UnityEvent onDrillStart;
+        public UnityEvent onDrillStop;
         [SerializeField] private DrillUIController _ui;
         [SerializeField] private float _drillTime;
         
@@ -60,6 +63,7 @@ namespace Life
         private WaitForSeconds waitOne = new WaitForSeconds(1f);
         private IEnumerator DrillCoroutine()
         {
+            onDrillStart.Invoke();
             var spec = _item.GameObject.GetComponent<Specimen>();
             if (spec.SpecimenData.Volatile)
             {
@@ -103,6 +107,7 @@ namespace Life
             _ui.SetError(false);
             _ui.SetProgress(0f);
             _working = false;
+            onDrillStop.Invoke();
         }
         
         private bool VerifyDrill()
