@@ -119,6 +119,8 @@ namespace Life
         {
             drone_music.getTimelinePosition(out position_dronemusic);
             drone_music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            drone_ambient.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
         }
 
         // Enter drone feed one-shot sfx

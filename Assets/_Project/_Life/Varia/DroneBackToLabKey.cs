@@ -11,10 +11,10 @@ namespace Life
         {
             if (Input.GetKeyDown(KeyCode.V))
             {
+                OnLeaveDrone.Invoke();
                 var player = FindObjectOfType<PlayerMovementController>(true);
                 player.gameObject.SetActive(true);
                 this.gameObject.SetActive(false);
-                OnLeaveDrone.Invoke();
             }
 
             if (Input.GetKeyDown(KeyCode.X))

@@ -12,12 +12,13 @@ namespace Life.MovementControllers
 
         private void Awake()
         {
-            OnPlayerSpawned.Invoke();
+            
             MobileCamera = GetComponentInChildren<Camera>();
         }
 
         private void OnEnable()
         {
+            OnPlayerSpawned.Invoke();
             Current = this;
         }
     }
