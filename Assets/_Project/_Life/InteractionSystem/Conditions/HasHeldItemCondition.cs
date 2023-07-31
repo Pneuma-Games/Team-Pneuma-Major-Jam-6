@@ -8,5 +8,10 @@ namespace Life.InteractionSystem
         {
             return TransportSystem.TransportSystem.ItemStored;
         }
+
+        public string GetErrorMessage()
+        {
+            return "Requires a sample in inventory.";
+        }
     }
 }

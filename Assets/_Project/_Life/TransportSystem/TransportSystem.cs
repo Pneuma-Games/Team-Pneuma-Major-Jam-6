@@ -37,5 +37,17 @@ namespace Life.TransportSystem
             _activeTransporter.Drop();
         }
         
+        public static SpecimenData GetStoredSpecimenData()
+        {
+            if (!TransporterAvailable || !ItemStored) return null;
+            return _activeTransporter.HeldItem.GameObject.GetComponent<Specimen>().SpecimenData;
+        }
+
+        public static SpecimenProgress GetStoredSpecimenProgress()
+        {
+            if (!TransporterAvailable || !ItemStored) return null;
+            return _activeTransporter.HeldItem.GameObject.GetComponent<Specimen>().SpecimenProgress;
+        }
+        
     }
 }

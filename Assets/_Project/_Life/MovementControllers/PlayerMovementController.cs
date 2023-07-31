@@ -26,9 +26,10 @@ namespace Life.MovementControllers
 
         private bool _onSurface => _cc.isGrounded;
 
-        void Start()
+        void OnEnable()
         {
             _playerCam.GroundNormal = Vector3.up;
+            LockCam();
         }
         
         private const string HORIZONTAL = "Horizontal";
