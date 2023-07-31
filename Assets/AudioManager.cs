@@ -1,3 +1,10 @@
+//This script should be on a prefab with the same name
+//Before doing anything with it, remove all the FMOD audio listeners components and add them again in the correct order: 0- player; 1-drone; 2-game over explosion
+//IMPORTANT!! All the banks must be loaded asynchronously, OTHERWISE WHOLE AUDIO SYSTEM MIGHT BE BROKEN. More info here: https://www.fmod.com/docs/2.02/unity/platform-specifics.html
+//To prevent audio stuttering issues when tabbing out of the game, make a script that detects this action and utilize function OnApplicationFocus made in this script (modify it if needed)
+//Audio Manager contains all the functions with events that need to be invoked in the correct places. I've attached some instructions that may help with this process
+//Please work, please work, please work, Please work, please work, please work, Please work, please work, please work, Please work, please work, please work, Please work, please work, please work, Please work, please work, please work, 
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,9 +46,9 @@ namespace Life
         {
             if (FMODUnity.RuntimeManager.StudioSystem.isValid())
             {
-                FMODUnity.RuntimeManager.PauseAllEvents(!focus);
+                FMODUnity.RuntimeManager.PauseAllEvents(!focus); 
 
-                if (!focus)
+                if (!focus) //also save some CPU usage
                 {
                     FMODUnity.RuntimeManager.CoreSystem.mixerSuspend();
                 }
@@ -57,6 +64,7 @@ namespace Life
         void Start()
         {
             FMODUnity.RuntimeManager.StudioSystem.setListenerWeight(1, 0f); //Temporarily disables drone audio listener on start
+            FMODUnity.RuntimeManager.StudioSystem.setListenerWeight(2, 0f); //Temporarily disables game over explosion audio listener on start
             cockpit_ambient = FMODUnity.RuntimeManager.CreateInstance("event:/ambient_cockpit");
             cockpit_music = FMODUnity.RuntimeManager.CreateInstance("event:/music_cockpit");
             drone_ambient = FMODUnity.RuntimeManager.CreateInstance("event:/drone/drone_ambient");
@@ -310,16 +318,27 @@ namespace Life
             FMODUnity.RuntimeManager.PlayOneShot("event:/gameover/victory");
         }
 
-        //Defeat
-        public void DefeatSound()
+        //Defeat - poison
+        public void DefeatPoison()
         {
+
             FMODUnity.RuntimeManager.PlayOneShot("event:/gameover/defeat");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/gameover/poison");
+        }
+
+        //Defeat - explosion
+        public void DefeatExplosion()
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setListenerWeight(2, 1f);
+            FMODUnity.RuntimeManager.StudioSystem.setListenerWeight(1, 0f);
+            FMODUnity.RuntimeManager.StudioSystem.setListenerWeight(0, 0f);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/gameover/explosion");
         }
 
 
-        //R E S E A R C H E R voice-over only
+            //R E S E A R C H E R voice-over only
 
-        public void ResearcherVO()
+            public void ResearcherVO()
         {
             FMODUnity.RuntimeManager.PlayOneShot("event:/vo_researcher");
 
