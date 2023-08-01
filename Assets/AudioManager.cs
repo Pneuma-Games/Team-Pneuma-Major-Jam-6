@@ -115,7 +115,10 @@ namespace Life
         //Get the drone speed value and use it as a parameter
         public void UpdateDroneSpeed(float spd)
         {
-            drone_ambient.setParameterByName("drone_speed", spd);
+            
+            float interpolatedValue = Mathf.Lerp(0, 1, spd);
+            Debug.Log(interpolatedValue*8);
+            drone_ambient.setParameterByName("drone_speed", interpolatedValue * 8);
         }
 
         // Stops the drone propeller sound after exiting the feed and music loop

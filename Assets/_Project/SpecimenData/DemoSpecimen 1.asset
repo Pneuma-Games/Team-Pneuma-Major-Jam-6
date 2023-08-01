@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Goober Man
   SpecimenId: 1002
-  Color: 0
-  RequiresDrilling: 1
-  RequiresDNA: 1
+  Color: 1
+  RequiresDrilling: 0
+  RequiresDNA: 0
   Toxic: 0
-  Volatile: 1
-  DrillLube: 1
-  DrillRpm: 3000
-  DbKey: 318
+  Volatile: 0
+  DrillLube: 0
+  DrillRpm: 0
+  DbKey: 0
   BinarySequence: 
-  SequenceDecoded: 666
+  SequenceDecoded: 0
   QuantumKey: 
   Image: {fileID: 21300000, guid: d048cf5d4eb1c7b4cba92687c841f370, type: 3}

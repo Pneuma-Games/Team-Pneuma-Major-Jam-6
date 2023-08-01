@@ -8,7 +8,7 @@ namespace Life.MovementControllers
     public class DroneMovement : MonoBehaviour
     {
 
-        
+        [SerializeField] public UnityEvent <float> OnUpdateDroneSpeed;
         [SerializeField] private float _maxFlatVel = 10f;
         [SerializeField] private float _maxVertVel = 5f;
         [SerializeField] private float _maxAngularVel = 10f;
@@ -70,6 +70,14 @@ namespace Life.MovementControllers
                 var accel = new Vector3(0,0, _yInput) * (_accel * boost * Time.fixedDeltaTime);
                 accel = transform.rotation * accel;
                 _flatVelocity += new Vector2(accel.x, accel.z);
+                if (Math.Abs(accel.x) > Math.Abs(accel.z))
+                {
+                    OnUpdateDroneSpeed.Invoke(Math.Abs(accel.x));
+                } else
+                {
+                    OnUpdateDroneSpeed.Invoke(Math.Abs(accel.z));
+                }
+                
             }
 
             if (_haltInput)

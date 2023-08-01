@@ -10,7 +10,7 @@ namespace Life
         [SerializeField] private GameObject _scanInteraction;
         [SerializeField] private GameObject _pickupInteraction;
         
-        [HideInInspector] public SpecimenProgress SpecimenProgress;
+        [SerializeField] public SpecimenProgress SpecimenProgress;
 
         private void Awake()
         {
