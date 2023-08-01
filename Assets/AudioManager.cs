@@ -75,6 +75,10 @@ namespace Life
             drill_stop = FMODUnity.RuntimeManager.CreateInstance("event:/drill/drill_stop");
             dna_scan = FMODUnity.RuntimeManager.CreateInstance("event:/dna_scan");
             quantum_ambient = FMODUnity.RuntimeManager.CreateInstance("event:/quantum/quantum_ambient");
+
+
+            //Couldn't find where this was being triggered, putting it here lol. - Cholfy
+            PlayCockpitAmbient();
         }
 
 
@@ -343,7 +347,6 @@ namespace Life
             public void ResearcherVO()
         {
             FMODUnity.RuntimeManager.PlayOneShot("event:/vo_researcher");
-
         }
     }
 }
