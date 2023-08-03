@@ -74,7 +74,7 @@ namespace Life
             _working = true;
             _workTime = 0f;
             _ui.SetStatus("Working");
-            var progress = spec.SpecimenProgress;
+            var progress = spec.specimenProgress;
             var result = VerifyDrill();
             if (result)
             {

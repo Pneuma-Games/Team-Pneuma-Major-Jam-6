@@ -13,7 +13,7 @@ namespace Life
         public void StoreItem(int idx, Specimen s)
         {
             Debug.Log("Storing item in slot " + idx + ".");
-            s.SpecimenProgress.Stored = true;
+            s.specimenProgress.Stored = true;
             _specimens[idx] = s;
             CurrentSubject.Instance.Specimen = null;
             CheckVictoryCondition();

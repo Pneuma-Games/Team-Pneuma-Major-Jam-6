@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d11d523f60cdb014faff2e1b50e6e309, type: 3}
   m_Name: 1007
   m_EditorClassIdentifier: 
-  Name: Axtre Engunisuis
+  Name: Ae
   SpecimenId: 1007
   Color: 2
   RequiresDrilling: 0

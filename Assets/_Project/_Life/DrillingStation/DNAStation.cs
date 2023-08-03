@@ -44,16 +44,16 @@ namespace Life
             var spc = _item.GameObject.GetComponent<Specimen>();
             var required = spc.SpecimenData.RequiresDNA;
             var ok = _ui.Code == spc.SpecimenData.SequenceDecoded.ToString();
-            var drillOK = !spc.SpecimenData.RequiresDrilling || (spc.SpecimenData.RequiresDrilling && spc.SpecimenProgress.DrillComplete);
+            var drillOK = !spc.SpecimenData.RequiresDrilling || (spc.SpecimenData.RequiresDrilling && spc.specimenProgress.DrillComplete);
             if (ok && required && drillOK)
             {
                 _ui.ShowSuccess();
-                spc.SpecimenProgress.DNAComplete = true;
+                spc.specimenProgress.DNAComplete = true;
             }
             else
             {
                 _ui.ShowError();
-                spc.SpecimenProgress.Destroyed = true;
+                spc.specimenProgress.Destroyed = true;
                 SpecimenPanel.Instance.IncreaseStrikes();
             }
             _pickupZone.SetActive(true);

@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 public class SpecimenPanel : MonoBehaviour
 {
-    public Action OnThreeStrikes = delegate {  }; 
+    //public Action OnThreeStrikes = delegate {  }; 
     
     public static SpecimenPanel Instance;
     
@@ -37,6 +37,7 @@ public class SpecimenPanel : MonoBehaviour
 
     private void HandleNewSubject()
     {
+        Debug.Log("Specimen changed" + CurrentSubject.Instance.Specimen);
         if (CurrentSubject.Instance.Specimen == null)
         {
             SetSpecimenImage(null);
@@ -83,12 +84,15 @@ public class SpecimenPanel : MonoBehaviour
 
         foreach (var c in newID)
         {
+            
             newString += c;
             specimenID.GetComponent<TextMeshProUGUI>().text = $"ID: {newString}";
 
             yield return new WaitForSeconds(Random.Range(minIDDisplayTime, maxIDDisplayTime));
         }
-
+        if (string.IsNullOrEmpty(newID)) {
+            specimenID.GetComponent<TextMeshProUGUI>().text = $"ID: ";
+        }
         specimenImage.SetActive(!string.IsNullOrEmpty(newID));
     }
     
@@ -105,6 +109,6 @@ public class SpecimenPanel : MonoBehaviour
             strikes[i].SetActive(true);
         }
         
-        if (_strikes == 3) OnThreeStrikes?.Invoke();
+        if (_strikes == 3) FindObjectOfType<ThreeStrikesSequence>().StrikeThree();
     }
 }

@@ -10,14 +10,15 @@ namespace Life
     {
         [SerializeField] public bool AcceptsInput;
 
-        //[SerializeField] private TextMeshProUGUI _specimenOutput;
+        [SerializeField] private TextMeshProUGUI _specimenOutput;
         //[SerializeField] private TextMeshProUGUI _input;
         //[SerializeField] private TextMeshProUGUI _specimenStatus;
         [SerializeField] private StoreAndPurgeStation _station;
-        
+        [SerializeField] public CurrentSubject currentSubject;
+
         public void SetSpecimenPresent(bool yes)
         {
-            //_specimenStatus.SetText(yes ? "Present" : "Empty");
+            _specimenOutput.SetText(yes ? currentSubject._specimen.specimenName: "Empty");
         }
         
         public void HandleButtonClick()

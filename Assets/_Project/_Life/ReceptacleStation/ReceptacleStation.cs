@@ -28,7 +28,7 @@ namespace Life
 
         public void PassItemToChute()
         {
-            _item.GameObject.GetComponent<Specimen>().SpecimenProgress.Deposited = true;
+            _item.GameObject.GetComponent<Specimen>().specimenProgress.Deposited = true;
             _chute.TakeOverItem(_item);
             _item = null;
         }

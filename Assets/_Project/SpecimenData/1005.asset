@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d11d523f60cdb014faff2e1b50e6e309, type: 3}
   m_Name: 1005
   m_EditorClassIdentifier: 
-  Name: Verstinia Liringitus
+  Name: vL
   SpecimenId: 1005
   Color: 2
   RequiresDrilling: 0
   RequiresDNA: 1
+  RequiresQuantum: 1
   Toxic: 0
   Volatile: 0
   DrillLube: 0
@@ -25,4 +26,5 @@ MonoBehaviour:
   BinarySequence: 100111
   SequenceDecoded: 754
   QuantumKey: Romeo
+  MandatorySpecimen: 0
   Image: {fileID: 21300000, guid: 524e3daef3a60ed42b85982d66f6a414, type: 3}

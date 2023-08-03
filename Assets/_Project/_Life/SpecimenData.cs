@@ -14,6 +14,7 @@ namespace Life
         // Fill in all correct parameters needed to complete station interactions, like drill time, DNA sequence etc.
         public bool RequiresDrilling;
         public bool RequiresDNA;
+        public bool RequiresQuantum;
         public bool Toxic;
         public bool Volatile;
         public bool DrillLube;
@@ -22,6 +23,7 @@ namespace Life
         public string BinarySequence;
         public int SequenceDecoded;
         public string QuantumKey;
+        public bool MandatorySpecimen;
         public Sprite Image;
     }
 
@@ -35,6 +37,7 @@ namespace Life
         public bool QuantumComplete;
         public bool Stored;
         public bool Destroyed;
+        public bool Complete;
     }
 
     public enum SpecimenColor
