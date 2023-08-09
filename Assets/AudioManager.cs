@@ -21,6 +21,8 @@ namespace Life
         [HideInInspector]
         public FMOD.Studio.EventInstance drone_ambient;
         [HideInInspector]
+        public FMOD.Studio.EventInstance drone_ambient_screams;
+        [HideInInspector]
         public FMOD.Studio.EventInstance drone_scan;
         [HideInInspector]
         public FMOD.Studio.EventInstance drone_music;
@@ -31,7 +33,7 @@ namespace Life
         [HideInInspector]
         public FMOD.Studio.EventInstance drill_stop;
         [HideInInspector]
-        public FMOD.Studio.EventInstance dna_scan;
+        public FMOD.Studio.EventInstance dna_ambient;
         [HideInInspector]
         public FMOD.Studio.EventInstance quantum_ambient;
         [HideInInspector]
@@ -41,7 +43,7 @@ namespace Life
         [HideInInspector]
         public int position_cockpitmusic = 0;
 
-        //Mutes audio when tabbed out of the game - has to be invoked on script that detects that action, then passes true/false to this one
+        //Mutes audio when tabbed out of the game
         public void OnApplicationFocus(bool focus)
         {
             if (FMODUnity.RuntimeManager.StudioSystem.isValid())
@@ -68,12 +70,13 @@ namespace Life
             cockpit_ambient = FMODUnity.RuntimeManager.CreateInstance("event:/ambient_cockpit");
             cockpit_music = FMODUnity.RuntimeManager.CreateInstance("event:/music_cockpit");
             drone_ambient = FMODUnity.RuntimeManager.CreateInstance("event:/drone/drone_ambient");
+            drone_ambient_screams = FMODUnity.RuntimeManager.CreateInstance("event:/drone/drone_ambient_screams");
             drone_scan = FMODUnity.RuntimeManager.CreateInstance("event:/drone/drone_scanspecimen");
             drone_music = FMODUnity.RuntimeManager.CreateInstance("event:/drone/drone_musicloop");
             drill_start = FMODUnity.RuntimeManager.CreateInstance("event:/drill/drill_start");
             drill_penetrating = FMODUnity.RuntimeManager.CreateInstance("event:/drill/drill_penetrating");
             drill_stop = FMODUnity.RuntimeManager.CreateInstance("event:/drill/drill_stop");
-            dna_scan = FMODUnity.RuntimeManager.CreateInstance("event:/dna_scan");
+            dna_ambient = FMODUnity.RuntimeManager.CreateInstance("event:/dna_ambient");
             quantum_ambient = FMODUnity.RuntimeManager.CreateInstance("event:/quantum/quantum_ambient");
 
 
@@ -103,7 +106,7 @@ namespace Life
         }
         //DRONE EVENTS
 
-        // Plays the drone propeller sound after entering the feed and music loop
+        // Plays the drone propeller and ambience sounds after entering the feed and music loop
         public void PlayDroneAmbient()
         {
             FMODUnity.RuntimeManager.StudioSystem.setListenerWeight(1, 1f);
@@ -111,6 +114,7 @@ namespace Life
             drone_ambient.start();
             drone_music.setTimelinePosition(position_dronemusic);
             drone_music.start();
+            drone_ambient_screams.start();
         }
         //Get the drone speed value and use it as a parameter
         public void UpdateDroneSpeed(float spd)
@@ -127,6 +131,7 @@ namespace Life
             drone_music.getTimelinePosition(out position_dronemusic);
             drone_music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             drone_ambient.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            drone_ambient_screams.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
 
         }
 
@@ -252,25 +257,24 @@ namespace Life
         {
             FMODUnity.RuntimeManager.PlayOneShot("event:/ui/ui_press");
         }
+        //UI Pass sample to station - this should play after passing the sample to the drill station or after ejecting it
+        public void UIpass()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/ui/ui_passtodrill");
+        }
 
         //DNA
 
-        //DNA Scan start
-        public void DnaScanStart()
+        //DNA ambient start
+        public void DnaAmbientStart()
         {
-            dna_scan.start();
+            dna_ambient.start();
         }
 
-        //DNA Scan stop
-        public void DnaScanStop()
+        //DNA ambient stop
+        public void DnaAmbientStop()
         {
-            dna_scan.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        }
-
-        //Play footstep
-        public void PlayFootstep()
-        {
-            FMODUnity.RuntimeManager.PlayOneShot("event:/player_footsteps", transform.position);
+            dna_ambient.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
 
         //QUANTUM - might be used for sth else
@@ -298,6 +302,16 @@ namespace Life
         {
             FMODUnity.RuntimeManager.PlayOneShot("event:/quantum/quantum_success");
         }
+        //OTHERS
+
+
+        //Play footstep
+        public void PlayFootstep()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/player_footsteps", transform.position);
+        }
+
+
 
         //MAIN MENU
 
@@ -319,7 +333,13 @@ namespace Life
             FMODUnity.RuntimeManager.PlayOneShot("event:/mainmenu/mainmenu_startgame");
         }
 
-        //GAME OVER
+        //STRIKES AND GAME OVERS
+
+        //Strike
+        public void StrikeSound()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/gameover/strike");
+        }
 
         //Victory
         public void VictorySound()
@@ -342,6 +362,12 @@ namespace Life
             FMODUnity.RuntimeManager.StudioSystem.setListenerWeight(1, 0f);
             FMODUnity.RuntimeManager.StudioSystem.setListenerWeight(0, 0f);
             FMODUnity.RuntimeManager.PlayOneShot("event:/gameover/explosion");
+        }
+        //Defeat - three strikes
+        public void DefeatStrikes()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/gameover/defeat");
+            //Would be cool to check if it is the last strike. If true, set the reverb send level to max
         }
 
 
