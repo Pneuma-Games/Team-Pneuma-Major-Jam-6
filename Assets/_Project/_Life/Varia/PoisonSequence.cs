@@ -26,11 +26,7 @@ namespace Life
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Debug.Log("Poison Death triggered");
-                PoisonDeath();
-            }
+            
 
             if (isTimerRunning)
             {

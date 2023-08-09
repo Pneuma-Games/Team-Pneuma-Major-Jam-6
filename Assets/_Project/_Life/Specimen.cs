@@ -40,7 +40,6 @@ namespace Life
         }
         private void Update()
         {
-            specimenProgress = new SpecimenProgress();
             specimenName = _specimenData.Name;
             if (!specimenProgress.Complete && specimenProgress.QuantumComplete && specimenProgress.DNAComplete && specimenProgress.DrillComplete && !specimenProgress.Destroyed)
             {

@@ -20,7 +20,7 @@ MonoBehaviour:
   RequiresQuantum: 1
   Toxic: 1
   Volatile: 0
-  DrillLube: 1
+  DrillLube: 0
   DrillRpm: 8000
   DbKey: 298
   BinarySequence: 001111

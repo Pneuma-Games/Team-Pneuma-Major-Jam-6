@@ -112,7 +112,7 @@ namespace Life
 
         private void HandleKeypress(char c)
         {
-            if (!char.IsDigit(c) || !AcceptsInput) return;
+            if (!AcceptsInput) return;
             if (_buffer.Count >= _maxBufferLen) return;
             _buffer.Add(c);
         }

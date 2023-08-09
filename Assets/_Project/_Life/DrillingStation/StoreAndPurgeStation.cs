@@ -1,5 +1,6 @@
 using Life.Managers;
 using UnityEngine;
+using Life.InteractionSystem;
 
 namespace Life
 {
@@ -26,7 +27,7 @@ namespace Life
 
             _animatedProp.SetActive(true);
             _dropZone.SetActive(false);
-            _pickupZone.SetActive(false);
+            _pickupZone.SetActive(true);
             _ui.SetSpecimenPresent(true);
             if (currentSubject._specimen.specimenProgress.Complete == true && currentSubject._specimen.SpecimenData.MandatorySpecimen == true)
             {
@@ -51,17 +52,19 @@ namespace Life
 
         public void PurgeItem()
         {
-            if (currentSubject._specimen.specimenProgress.Complete == true && currentSubject._specimen.SpecimenData.MandatorySpecimen == true)
+            if (currentSubject._specimen.SpecimenData.MandatorySpecimen == true)
             {
                 FindObjectOfType<FiredSequence>().PlayFired();
             }
+            ControlTransferTransition controlTransferTransition = gameObject.GetComponentInChildren<ControlTransferTransition>();
+            controlTransferTransition.TransferToPlayer();
             Debug.Log("Specimen Purged");
             _item = null;
-            currentSubject.SetNull();
             _animatedProp.SetActive(false);
             _dropZone.SetActive(true);
             _pickupZone.SetActive(false);
             _ui.SetSpecimenPresent(false);
+            currentSubject.SetNull();
         }
     }
 }

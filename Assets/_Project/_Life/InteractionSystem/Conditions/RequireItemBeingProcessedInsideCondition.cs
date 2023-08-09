@@ -20,6 +20,10 @@ namespace Life.InteractionSystem
                 {
                     return _negate;
                 }
+                if (specimen.specimenProgress.Complete)
+                {
+                    return _negate;
+                }
 
                 return !_negate;
             }

@@ -19,6 +19,9 @@ namespace Life
 
         public virtual void SpitOutItem()
         {
+            ParticleSystem particleEmitter = _item.GameObject.GetComponentInChildren<ParticleSystem>();
+            Debug.Log("Particle Emitter: " + particleEmitter.name);
+            particleEmitter.gameObject.SetActive(false);
             _item.GameObject.transform.position = ItemSpawnPoint.position;
             _item.GameObject.SetActive(true);
             _item = null;

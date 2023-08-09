@@ -32,8 +32,7 @@ namespace Life
         public override void SpitOutItem()
         {
             var specimen = _item.GameObject.GetComponent<Specimen>();
-            ParticleSystem particleEmitter = _item.GameObject.GetComponent<ParticleSystem>();
-            particleEmitter.Stop();
+
             if (specimen.SpecimenData.Volatile)
             {
                 FindObjectOfType<ExplosionSequence>().GoBoom();
