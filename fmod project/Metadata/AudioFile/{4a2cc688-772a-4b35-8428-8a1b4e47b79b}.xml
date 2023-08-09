@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{4a2cc688-772a-4b35-8428-8a1b4e47b79b}">
+		<property name="assetPath">
+			<value>SX_Drone/SX_Drone_Ambient_Screams_4.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>7.7428571428571429</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{843883a1-7778-4660-9afa-e89bddcd58d6}</destination>
+		</relationship>
+	</object>
+</objects>
