@@ -74,15 +74,15 @@ namespace Life
             _working = true;
             _workTime = 0f;
             _ui.SetStatus("Working");
-            var progress = spec.SpecimenProgress;
+            //var progress = ;
             var result = VerifyDrill();
             if (result)
             {
-                progress.DrillComplete = true;
+                spec.specimenProgress.DrillComplete = true;
             }
             else
             {
-                progress.Destroyed = true;
+                spec.specimenProgress.Destroyed = true;
                 SpecimenPanel.Instance.IncreaseStrikes();
             }
 

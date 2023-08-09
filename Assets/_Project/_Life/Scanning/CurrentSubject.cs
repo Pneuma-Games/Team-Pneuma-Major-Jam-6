@@ -18,11 +18,16 @@ namespace Life
             get => _specimen;
         }
 
-        private Specimen _specimen;
+        public Specimen _specimen;
 
         private void Awake()
         {
             Instance = this;
+        }
+
+        public void SetNull()
+        {
+            Instance.Specimen = null;
         }
     }
 }

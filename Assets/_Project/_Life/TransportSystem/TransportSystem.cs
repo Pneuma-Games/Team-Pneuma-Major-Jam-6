@@ -46,7 +46,7 @@ namespace Life.TransportSystem
         public static SpecimenProgress GetStoredSpecimenProgress()
         {
             if (!TransporterAvailable || !ItemStored) return null;
-            return _activeTransporter.HeldItem.GameObject.GetComponent<Specimen>().SpecimenProgress;
+            return _activeTransporter.HeldItem.GameObject.GetComponent<Specimen>().specimenProgress;
         }
         
     }

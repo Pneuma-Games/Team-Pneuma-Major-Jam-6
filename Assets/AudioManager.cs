@@ -121,7 +121,7 @@ namespace Life
         {
             
             float interpolatedValue = Mathf.Lerp(0, 1, spd);
-            Debug.Log(interpolatedValue*8);
+            //Debug.Log(interpolatedValue*8);
             drone_ambient.setParameterByName("drone_speed", interpolatedValue * 8);
         }
 
@@ -197,7 +197,7 @@ namespace Life
         //Release specimen/sample into the bin/receptacle - THIS MUST BE INVOKED ON THE SCRIPT ATTACHED TO THE BIN
         public void ReleaseSample()
         {
-            FMODUnity.RuntimeManager.PlayOneShot("event:/drone/drone_releasesample", transform.position);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/drone/drone_releasesample");
         }
 
         //DRILL EVENTS - THOSE ARE 3D SFX'S SO INVOKE ON THE SCRIPT ATTACHED TO A DRILL
@@ -351,8 +351,16 @@ namespace Life
         public void DefeatPoison()
         {
 
-            FMODUnity.RuntimeManager.PlayOneShot("event:/gameover/defeat");
+            //FMODUnity.RuntimeManager.PlayOneShot("event:/gameover/defeat");
             FMODUnity.RuntimeManager.PlayOneShot("event:/gameover/poison");
+        }
+
+        //Defeat - poison
+        public void Defeat()
+        {
+
+            FMODUnity.RuntimeManager.PlayOneShot("event:/gameover/defeat");
+            //FMODUnity.RuntimeManager.PlayOneShot("event:/gameover/poison");
         }
 
         //Defeat - explosion

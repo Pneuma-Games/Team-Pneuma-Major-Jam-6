@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Life
 {
@@ -8,7 +9,8 @@ namespace Life
         [SerializeField] private GameObject _dropZone;
         [SerializeField] private GameObject _pickupZone;
         [SerializeField] private DNAStationUI _ui;
-        
+        [SerializeField] public UnityEvent OnPickup;
+        [SerializeField] public UnityEvent OnSetDown;
         private void Awake()
         {
             _animatedProp.SetActive(false);
@@ -24,6 +26,7 @@ namespace Life
             _pickupZone.SetActive(false);
             _ui.SetSpecimenPresent(true);
             _ui.SetSpecimenOutput(_item.GameObject.GetComponent<Specimen>().SpecimenData.DbKey.ToString());
+            OnSetDown.Invoke();
         }
         
         public override void SpitOutItem()
@@ -36,6 +39,7 @@ namespace Life
             _ui.SetSpecimenPresent(false);
             _ui.ShowInput();
             _ui.ResetInput();
+            OnPickup.Invoke();
         }
 
         public void ProcessItem()
@@ -44,16 +48,16 @@ namespace Life
             var spc = _item.GameObject.GetComponent<Specimen>();
             var required = spc.SpecimenData.RequiresDNA;
             var ok = _ui.Code == spc.SpecimenData.SequenceDecoded.ToString();
-            var drillOK = !spc.SpecimenData.RequiresDrilling || (spc.SpecimenData.RequiresDrilling && spc.SpecimenProgress.DrillComplete);
+            var drillOK = !spc.SpecimenData.RequiresDrilling || (spc.SpecimenData.RequiresDrilling && spc.specimenProgress.DrillComplete);
             if (ok && required && drillOK)
             {
                 _ui.ShowSuccess();
-                spc.SpecimenProgress.DNAComplete = true;
+                spc.specimenProgress.DNAComplete = true;
             }
             else
             {
                 _ui.ShowError();
-                spc.SpecimenProgress.Destroyed = true;
+                spc.specimenProgress.Destroyed = true;
                 SpecimenPanel.Instance.IncreaseStrikes();
             }
             _pickupZone.SetActive(true);

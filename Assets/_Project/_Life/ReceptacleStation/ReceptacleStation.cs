@@ -1,12 +1,14 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Life
 {
     public class ReceptacleStation : ProcessingStationBase
     {
         [SerializeField] private ChuteStation _chute;
-        
+        [SerializeField] public UnityEvent DroneDropoff;
+
         public Transform DoorReference;
         public Transform Door;
         [SerializeField] private float _yOpen;
@@ -28,7 +30,8 @@ namespace Life
 
         public void PassItemToChute()
         {
-            _item.GameObject.GetComponent<Specimen>().SpecimenProgress.Deposited = true;
+            DroneDropoff.Invoke();
+            _item.GameObject.GetComponent<Specimen>().specimenProgress.Deposited = true;
             _chute.TakeOverItem(_item);
             _item = null;
         }

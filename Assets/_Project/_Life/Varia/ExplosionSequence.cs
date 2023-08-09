@@ -7,6 +7,7 @@ namespace Life
 {
     public class ExplosionSequence : MonoBehaviour
     {
+        public UnityEvent OnStart;
         public UnityEvent OnDeath;
         public GameObject _cam1;
         public GameObject _cam2;
@@ -18,6 +19,11 @@ namespace Life
         public CanvasGroup _cGroup;
         
         private Camera[] _cameras;
+
+        private void Update()
+        {
+            
+        }
 
         private void Awake()
         {
@@ -38,6 +44,7 @@ namespace Life
 
         private IEnumerator ExplosionSequenceCoroutine()
         {
+            OnStart.Invoke();
             _cam1.SetActive(true);
             yield return new WaitForSeconds(2.0f);
             _cam1.SetActive(false);

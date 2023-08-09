@@ -8,6 +8,7 @@ namespace Life
     public class DroneBackToLabKey : MonoBehaviour
     {
         public UnityEvent OnLeaveDrone;
+        public UnityEvent OnDropItem;
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.V))
@@ -21,7 +22,9 @@ namespace Life
 
             if (Input.GetKeyDown(KeyCode.X))
             {
+                OnDropItem.Invoke();
                 TransportSystem.TransportSystem.DropItem();
+                
             }
         }
     }
