@@ -4,6 +4,7 @@ using Life;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public class SpecimenPanel : MonoBehaviour
@@ -11,6 +12,7 @@ public class SpecimenPanel : MonoBehaviour
     //public Action OnThreeStrikes = delegate {  }; 
     
     public static SpecimenPanel Instance;
+    public UnityEvent OnStrike;
     
     [SerializeField] private GameObject[] strikes;
     [SerializeField] private GameObject specimenImage;
@@ -98,6 +100,7 @@ public class SpecimenPanel : MonoBehaviour
     
     public void IncreaseStrikes()
     {
+
         _strikes++;
         foreach (var s in strikes)
         {
@@ -108,7 +111,7 @@ public class SpecimenPanel : MonoBehaviour
         {
             strikes[i].SetActive(true);
         }
-        
+        OnStrike.Invoke();
         if (_strikes == 3) FindObjectOfType<ThreeStrikesSequence>().StrikeThree();
     }
 }

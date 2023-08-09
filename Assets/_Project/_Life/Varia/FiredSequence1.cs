@@ -17,6 +17,7 @@ namespace Life
         public CanvasGroup _cGroup;
         private Camera[] _cameras;
 
+        
 
         private void Awake()
         {

@@ -1,6 +1,7 @@
 using Life.Managers;
 using UnityEngine;
 using Life.InteractionSystem;
+using UnityEngine.Events;
 
 namespace Life
 {
@@ -11,6 +12,8 @@ namespace Life
         [SerializeField] private GameObject _pickupZone;
         [SerializeField] private StoreAndPurgeStationUI _ui;
         [SerializeField] private CurrentSubject currentSubject;
+        [SerializeField] public UnityEvent OnPickup;
+        [SerializeField] public UnityEvent OnSetDown;
         private GameManager _gameManager;
 
         private void Awake()
@@ -33,6 +36,7 @@ namespace Life
             {
                 _gameManager.numberOfStoredMandatorySpecimens++;
             }
+            OnSetDown.Invoke();
         }
             
         
@@ -48,6 +52,7 @@ namespace Life
             _dropZone.SetActive(true);
             _pickupZone.SetActive(false);
             _ui.SetSpecimenPresent(false);
+            OnPickup.Invoke();
         }
 
         public void PurgeItem()

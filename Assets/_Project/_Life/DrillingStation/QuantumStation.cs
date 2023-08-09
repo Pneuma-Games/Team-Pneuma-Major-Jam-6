@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Life
 {
     public class QuantumStation : MockStation
     {
+        [SerializeField] public UnityEvent OnPickup;
+        [SerializeField] public UnityEvent OnSetDown;
+
         [SerializeField] private GameObject _animatedProp;
         [SerializeField] private GameObject _dropZone;
         [SerializeField] private GameObject _pickupZone;
@@ -23,6 +27,7 @@ namespace Life
             _dropZone.SetActive(false);
             _pickupZone.SetActive(false);
             _ui.SetSpecimenPresent(true);
+            OnSetDown.Invoke();
         }
         
         public override void SpitOutItem()
@@ -35,6 +40,7 @@ namespace Life
             _ui.SetSpecimenPresent(false);
             _ui.ShowInput();
             _ui.ResetInput();
+            OnPickup.Invoke();
         }
 
         public void ProcessItem()

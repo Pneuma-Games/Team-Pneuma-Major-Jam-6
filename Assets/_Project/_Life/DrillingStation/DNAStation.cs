@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Life
 {
@@ -8,7 +9,8 @@ namespace Life
         [SerializeField] private GameObject _dropZone;
         [SerializeField] private GameObject _pickupZone;
         [SerializeField] private DNAStationUI _ui;
-        
+        [SerializeField] public UnityEvent OnPickup;
+        [SerializeField] public UnityEvent OnSetDown;
         private void Awake()
         {
             _animatedProp.SetActive(false);
@@ -24,6 +26,7 @@ namespace Life
             _pickupZone.SetActive(false);
             _ui.SetSpecimenPresent(true);
             _ui.SetSpecimenOutput(_item.GameObject.GetComponent<Specimen>().SpecimenData.DbKey.ToString());
+            OnSetDown.Invoke();
         }
         
         public override void SpitOutItem()
@@ -36,6 +39,7 @@ namespace Life
             _ui.SetSpecimenPresent(false);
             _ui.ShowInput();
             _ui.ResetInput();
+            OnPickup.Invoke();
         }
 
         public void ProcessItem()

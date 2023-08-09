@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Life.TransportSystem
 {
@@ -10,12 +11,23 @@ namespace Life.TransportSystem
     {
         // Used for spawning dropped items.
         [SerializeField] private Transform _dropPoint;
+        [SerializeField] public UnityEvent DronePickup;
+        [SerializeField] public UnityEvent DroneDropoff;
 
         public ITransportable HeldItem { get; private set; }
         
         
         public void Store(ITransportable item)
         {
+            Debug.Log(gameObject.tag + " " + (item != null));
+            if (gameObject.tag == "Drone" && item != null)
+            {
+                DronePickup.Invoke();
+            } else if (gameObject.tag == "Drone" && item == null)
+            {
+                //Debug.Log("INvoked drop off");
+                DroneDropoff.Invoke();
+            }
             HeldItem = item;
             if (item != null) item.GameObject.SetActive(false);
         }
