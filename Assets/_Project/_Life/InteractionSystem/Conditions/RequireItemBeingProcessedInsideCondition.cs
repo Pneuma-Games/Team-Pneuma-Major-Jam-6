@@ -14,9 +14,13 @@ namespace Life.InteractionSystem
                 return _negate;
             }
             
-            if (specimen.SpecimenProgress.Deposited)
+            if (specimen.specimenProgress.Deposited)
             {
-                if (specimen.SpecimenProgress.Stored)
+                if (specimen.specimenProgress.Stored)
+                {
+                    return _negate;
+                }
+                if (specimen.specimenProgress.Complete)
                 {
                     return _negate;
                 }

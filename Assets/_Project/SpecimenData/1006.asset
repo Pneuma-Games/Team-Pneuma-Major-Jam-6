@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d11d523f60cdb014faff2e1b50e6e309, type: 3}
   m_Name: 1006
   m_EditorClassIdentifier: 
-  Name: Haderis Maniclua
+  Name: Hm
   SpecimenId: 1006
   Color: 1
   RequiresDrilling: 0

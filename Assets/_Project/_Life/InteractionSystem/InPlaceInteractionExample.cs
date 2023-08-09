@@ -27,7 +27,7 @@ namespace Life.InteractionSystem
         {
             _inControl = true;
             WorldUI.Instance.Canvas.worldCamera = StaticCamera;
-            Cursor.lockState = CursorLockMode.Confined;
+            //Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
             OnGainedControl?.Invoke();
         }

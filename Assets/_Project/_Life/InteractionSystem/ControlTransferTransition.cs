@@ -31,6 +31,7 @@ namespace Life.InteractionSystem
             });
             camObjTForm.DORotateQuaternion(_interaction.TargetCameraRotation, _transitionTime);
             _interaction.StaticCamera.DOFieldOfView(_interaction.TargetCameraFOV, _transitionTime);
+            Cursor.lockState = CursorLockMode.None;
         }
 
         public void TransferToPlayer()
@@ -44,6 +45,7 @@ namespace Life.InteractionSystem
             });
             camObjTForm.DORotateQuaternion(playerCamTForm.rotation, _transitionTime);
             _interaction.StaticCamera.DOFieldOfView(_interactingAvatar.MobileCamera.fieldOfView, _transitionTime);
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         private void Awake()

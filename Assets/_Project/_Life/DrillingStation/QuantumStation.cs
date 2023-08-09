@@ -41,18 +41,18 @@ namespace Life
         {
             if (!_item.GameObject) return;
             var spc = _item.GameObject.GetComponent<Specimen>();
-            var dnaOk = !spc.SpecimenData.RequiresDNA || (spc.SpecimenData.RequiresDNA && spc.SpecimenProgress.DNAComplete);
-            var drillOk = !spc.SpecimenData.RequiresDrilling || (spc.SpecimenData.RequiresDrilling && spc.SpecimenProgress.DrillComplete);
+            var dnaOk = !spc.SpecimenData.RequiresDNA || (spc.SpecimenData.RequiresDNA && spc.specimenProgress.DNAComplete);
+            var drillOk = !spc.SpecimenData.RequiresDrilling || (spc.SpecimenData.RequiresDrilling && spc.specimenProgress.DrillComplete);
             var ok = _ui.Code == spc.SpecimenData.QuantumKey.ToString();
             if (ok && dnaOk && drillOk)
             {
                 _ui.ShowSuccess();
-                spc.SpecimenProgress.QuantumComplete = true;
+                spc.specimenProgress.QuantumComplete = true;
             }
             else
             {
                 _ui.ShowError();
-                spc.SpecimenProgress.Destroyed = true;
+                spc.specimenProgress.Destroyed = true;
                 SpecimenPanel.Instance.IncreaseStrikes();
             }
             _pickupZone.SetActive(true);

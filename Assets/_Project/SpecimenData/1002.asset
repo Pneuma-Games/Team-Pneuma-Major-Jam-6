@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d11d523f60cdb014faff2e1b50e6e309, type: 3}
   m_Name: 1002
   m_EditorClassIdentifier: 
-  Name: Verstinia Liringitus 2
+  Name: vL2
   SpecimenId: 1002
   Color: 0
   RequiresDrilling: 1
