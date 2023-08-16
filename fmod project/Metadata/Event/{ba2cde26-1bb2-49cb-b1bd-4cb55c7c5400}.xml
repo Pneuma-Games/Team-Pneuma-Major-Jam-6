@@ -56,7 +56,14 @@
 			<destination>{6026ccad-9131-4aed-82ac-52c63a064d6c}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{b0f3d8ac-5102-47bb-92eb-b749853580f2}" />
+	<object class="EventAutomatableProperties" id="{b0f3d8ac-5102-47bb-92eb-b749853580f2}">
+		<property name="minimumDistance">
+			<value>0</value>
+		</property>
+		<property name="maximumDistance">
+			<value>15</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{263a380e-70c5-4559-b5f8-f16ddbdb9e29}" />
 	<object class="GroupTrack" id="{24b404fe-718f-47fc-834b-c08400f224cf}">
 		<relationship name="modules">
@@ -101,7 +108,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{2542c9f3-8cdd-40f2-9793-7282b14c0214}">
 		<property name="volume">
-			<value>-3</value>
+			<value>-15.5</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
@@ -122,7 +129,14 @@
 			<destination>{50851d5a-2aab-4aa6-a21c-aa1d47325f50}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{e6cc72b0-91e9-4b86-9b8d-784f1b269687}" />
+	<object class="MixerBusPanner" id="{e6cc72b0-91e9-4b86-9b8d-784f1b269687}">
+		<property name="surroundPanDirection">
+			<value>-6.8063639e-07</value>
+		</property>
+		<property name="surroundPanExtent">
+			<value>102.800026</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{b73cd184-23cd-4f71-90c0-2389fceaee3b}" />
 	<object class="FadeCurve" id="{1d07d157-041d-4f89-89ba-65c86294bb4a}">
 		<relationship name="startPoint">
@@ -139,7 +153,23 @@
 	</object>
 	<object class="MixerBusPanner" id="{e83df49e-c95b-4fac-bbb6-ae4d51a2c227}" />
 	<object class="MixerBusFader" id="{c3b5b438-3dd9-4a1e-a185-0af82b954ec7}" />
-	<object class="SpatialiserEffect" id="{50851d5a-2aab-4aa6-a21c-aa1d47325f50}" />
+	<object class="SpatialiserEffect" id="{50851d5a-2aab-4aa6-a21c-aa1d47325f50}">
+		<property name="bypass">
+			<value>true</value>
+		</property>
+		<property name="distanceRolloffType">
+			<value>1</value>
+		</property>
+		<property name="minimumDistance">
+			<value>2</value>
+		</property>
+		<property name="maximumDistance">
+			<value>30</value>
+		</property>
+		<property name="overrideRange">
+			<value>true</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{f780989c-edd6-43a6-951e-9373e3ef5a30}">
 		<property name="position">
 			<value>1.5</value>

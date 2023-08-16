@@ -100,7 +100,14 @@
 			<destination>{33927535-ba5d-48fc-b9b7-e7e19e974c43}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{7b532d70-7c22-4d69-999e-228312efabf3}" />
+	<object class="MixerBusPanner" id="{7b532d70-7c22-4d69-999e-228312efabf3}">
+		<property name="surroundPanDirection">
+			<value>176.308609</value>
+		</property>
+		<property name="surroundPanExtent">
+			<value>252.44577</value>
+		</property>
+	</object>
 	<object class="MultiSound" id="{0c341fc9-0802-4edc-b605-0ee2b46288c4}">
 		<property name="volume">
 			<value>-4</value>
@@ -129,7 +136,11 @@
 	</object>
 	<object class="MixerBusFader" id="{e6b5a67c-08e6-4215-85a0-70a436925216}" />
 	<object class="MixerBusFader" id="{9501adb6-956e-4dec-b54c-aa681963c362}" />
-	<object class="SpatialiserEffect" id="{223d5467-f4c8-487c-9ec7-0853a77602bb}" />
+	<object class="SpatialiserEffect" id="{223d5467-f4c8-487c-9ec7-0853a77602bb}">
+		<property name="bypass">
+			<value>true</value>
+		</property>
+	</object>
 	<object class="MixerSend" id="{33927535-ba5d-48fc-b9b7-e7e19e974c43}">
 		<property name="level">
 			<value>-20.5</value>

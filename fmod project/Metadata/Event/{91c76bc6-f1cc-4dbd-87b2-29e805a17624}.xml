@@ -115,7 +115,14 @@
 			<destination>{f4ce737b-0b47-49a3-b3f7-f227bbb8a4af}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{5de4fef0-112a-45a1-84da-06773d097e05}" />
+	<object class="MixerBusPanner" id="{5de4fef0-112a-45a1-84da-06773d097e05}">
+		<property name="surroundPanDirection">
+			<value>-124.99202</value>
+		</property>
+		<property name="surroundPanExtent">
+			<value>342.291168</value>
+		</property>
+	</object>
 	<object class="SingleSound" id="{34766f4e-af3d-440e-8cc9-19f0646c8962}">
 		<relationship name="audioFile">
 			<destination>{ddfaf669-b6f0-4686-a4fc-1772349c0110}</destination>
@@ -123,7 +130,11 @@
 	</object>
 	<object class="MixerBusFader" id="{86e02910-5784-41d0-8f3c-b353351467b4}" />
 	<object class="MixerBusFader" id="{6619824d-34a4-4c52-907f-b785d9acfac0}" />
-	<object class="SpatialiserEffect" id="{c0a5590b-b312-45f8-b5e9-89f27fb91b23}" />
+	<object class="SpatialiserEffect" id="{c0a5590b-b312-45f8-b5e9-89f27fb91b23}">
+		<property name="bypass">
+			<value>true</value>
+		</property>
+	</object>
 	<object class="SFXReverbEffect" id="{f4ce737b-0b47-49a3-b3f7-f227bbb8a4af}">
 		<property name="decayTime">
 			<value>10500</value>

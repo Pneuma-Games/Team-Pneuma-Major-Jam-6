@@ -154,7 +154,14 @@
 			<destination>{cf1d3fd7-3978-4c13-bb3b-a1eb655232b0}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{d98a89cf-d4e7-48ae-8fee-665289d9ffdd}" />
+	<object class="MixerBusPanner" id="{d98a89cf-d4e7-48ae-8fee-665289d9ffdd}">
+		<property name="surroundPanDirection">
+			<value>48.5035324</value>
+		</property>
+		<property name="surroundPanExtent">
+			<value>218.553772</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{01736cf2-c97a-4259-9150-c112ffe72f75}" />
 	<object class="FadeCurve" id="{43b435f2-f8fb-421c-9bb5-a0c4910c8d80}">
 		<relationship name="startPoint">
@@ -177,7 +184,11 @@
 	</object>
 	<object class="MixerBusPanner" id="{dfed9562-b486-4f09-930d-43cabe6a8a75}" />
 	<object class="MixerBusFader" id="{6f5de3cf-c607-4567-ba30-2ea69142a704}" />
-	<object class="SpatialiserEffect" id="{cf1d3fd7-3978-4c13-bb3b-a1eb655232b0}" />
+	<object class="SpatialiserEffect" id="{cf1d3fd7-3978-4c13-bb3b-a1eb655232b0}">
+		<property name="bypass">
+			<value>true</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{a164d1f0-e5f5-40a4-b149-e51e64401853}">
 		<property name="position">
 			<value>2.1047320241725584</value>

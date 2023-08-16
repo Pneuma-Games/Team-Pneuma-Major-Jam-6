@@ -119,7 +119,11 @@
 			<destination>{fc34adde-e379-492f-9fd4-8605290a708e}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{a32444b1-8c15-4948-98e5-281a7f24bf9e}" />
+	<object class="MixerBusPanner" id="{a32444b1-8c15-4948-98e5-281a7f24bf9e}">
+		<relationship name="modulators">
+			<destination>{b003c9a4-441f-4240-a82d-46fe72727367}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{7a37a8e8-fafa-4bf5-9a0f-a7e9c743a510}" />
 	<object class="FadeCurve" id="{7cfb5fb8-c5da-4afe-af22-50da6dc6b301}">
 		<relationship name="startPoint">
@@ -165,6 +169,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{fc34adde-e379-492f-9fd4-8605290a708e}" />
+	<object class="RandomizerModulator" id="{b003c9a4-441f-4240-a82d-46fe72727367}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>stereoPan</value>
+		</property>
+		<property name="amount">
+			<value>47.5</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{7879d90f-d729-44a4-852f-2df2f05793a7}">
 		<property name="position">
 			<value>9.2000000000000011</value>

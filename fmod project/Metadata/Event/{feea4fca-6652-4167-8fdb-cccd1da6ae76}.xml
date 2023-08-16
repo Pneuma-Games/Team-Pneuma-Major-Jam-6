@@ -56,7 +56,14 @@
 			<destination>{7402c655-dc68-4339-9e9e-5c0b8ad5b149}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{e329806a-e0e6-4a69-bf3e-7ef8d8289793}" />
+	<object class="EventAutomatableProperties" id="{e329806a-e0e6-4a69-bf3e-7ef8d8289793}">
+		<property name="minimumDistance">
+			<value>0</value>
+		</property>
+		<property name="maximumDistance">
+			<value>9.80000019</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{c928a20f-7218-4e6c-8d34-d8ddb9278377}" />
 	<object class="GroupTrack" id="{542b696c-ab7c-4362-955c-8fc9e29a285a}">
 		<relationship name="modules">
@@ -124,7 +131,10 @@
 			<value>-80</value>
 		</property>
 		<property name="attackTime">
-			<value>0</value>
+			<value>124.358986</value>
+		</property>
+		<property name="peakValue">
+			<value>0.577777863</value>
 		</property>
 		<property name="releaseTime">
 			<value>340</value>
@@ -149,6 +159,9 @@
 	<object class="MixerBusPanner" id="{fd295f89-cebb-4cd4-8ef6-923e40440696}" />
 	<object class="MixerBusFader" id="{dc893d79-0d69-4016-a5f7-f8bcb5aad4d6}" />
 	<object class="SpatialiserEffect" id="{131d51f6-6396-4558-9a84-8a94d3124523}">
+		<property name="bypass">
+			<value>true</value>
+		</property>
 		<property name="distanceRolloffType">
 			<value>1</value>
 		</property>

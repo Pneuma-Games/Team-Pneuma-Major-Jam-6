@@ -139,7 +139,14 @@
 			<destination>{550125f8-3036-4a1d-964b-8102dd893289}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{e59a70bb-506b-4326-a480-7df1578c8845}" />
+	<object class="MixerBusPanner" id="{e59a70bb-506b-4326-a480-7df1578c8845}">
+		<property name="surroundPanDirection">
+			<value>48.2397003</value>
+		</property>
+		<property name="surroundPanExtent">
+			<value>192.326233</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{28162c73-95d2-41fc-aefe-1e864c9e2d77}" />
 	<object class="ADSRModulator" id="{e88ce8b4-0ba7-4dc3-9ce3-8df58d5198a6}">
 		<property name="nameOfPropertyBeingModulated">
@@ -166,7 +173,11 @@
 	</object>
 	<object class="MixerBusPanner" id="{47f6df5b-2f75-4430-8b28-8f9e9d5929a3}" />
 	<object class="MixerBusFader" id="{4cf89aba-b858-4ab4-aaa8-37da95e610ba}" />
-	<object class="SpatialiserEffect" id="{550125f8-3036-4a1d-964b-8102dd893289}" />
+	<object class="SpatialiserEffect" id="{550125f8-3036-4a1d-964b-8102dd893289}">
+		<property name="bypass">
+			<value>true</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{f9162936-5e92-4fda-aac0-cc03c58ba99e}" />
 	<object class="SFXReverbEffect" id="{d9e7596a-cec6-4ecb-8c03-40b5d7f9c0b4}">
 		<property name="decayTime">

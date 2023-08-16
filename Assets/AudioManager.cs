@@ -27,6 +27,8 @@ namespace Life
         [HideInInspector]
         public FMOD.Studio.EventInstance drone_music;
         [HideInInspector]
+        public FMOD.Studio.EventInstance drone_release;
+        [HideInInspector]
         public FMOD.Studio.EventInstance drill_start;
         [HideInInspector]
         public FMOD.Studio.EventInstance drill_penetrating;
@@ -197,6 +199,15 @@ namespace Life
         //Release specimen/sample into the bin/receptacle - THIS MUST BE INVOKED ON THE SCRIPT ATTACHED TO THE BIN
         public void ReleaseSample()
         {
+            //ReleaseSpecimen.Invoke(gameObject);
+            //drone_release = FMODUnity.RuntimeManager.CreateInstance("event:/drone/drone_releasesample");
+            //if (gameObject.GetComponent<Rigidbody>() == null)
+            // {
+            //gameObject.AddComponent<Rigidbody>().useGravity = false;
+            //}
+            //FMODUnity.RuntimeManager.AttachInstanceToGameObject(drone_release, transform, GetComponent<Rigidbody>());
+            //drone_release.start();
+            //drone_release.release();
             FMODUnity.RuntimeManager.PlayOneShot("event:/drone/drone_releasesample");
         }
 

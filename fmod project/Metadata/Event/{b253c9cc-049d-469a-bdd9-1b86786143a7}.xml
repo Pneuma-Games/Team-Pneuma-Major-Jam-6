@@ -226,7 +226,7 @@
 			<value>-80</value>
 		</property>
 		<property name="attackTime">
-			<value>260</value>
+			<value>500</value>
 		</property>
 		<property name="releaseTime">
 			<value>960</value>
@@ -332,7 +332,11 @@
 	</object>
 	<object class="MixerBusPanner" id="{5343222f-9c31-4433-b86d-9cedb8f1713d}" />
 	<object class="MixerBusFader" id="{71fb33d3-8a66-4e0a-a728-ff4a3c572460}" />
-	<object class="SpatialiserEffect" id="{5aa16767-097e-4fe5-94bc-5865920cde5f}" />
+	<object class="SpatialiserEffect" id="{5aa16767-097e-4fe5-94bc-5865920cde5f}">
+		<property name="bypass">
+			<value>true</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{ee9f0ce4-7d5a-4496-9d03-6a28b0e42d25}">
 		<property name="position">
 			<value>44</value>

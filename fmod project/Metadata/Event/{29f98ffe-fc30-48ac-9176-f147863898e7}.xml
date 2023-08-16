@@ -185,7 +185,14 @@
 			<destination>{fa986c56-c9d4-4caa-9b9e-ec4fcf2432c1}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{8a7469ff-b3aa-4679-9a5b-67047146d0c1}" />
+	<object class="MixerBusPanner" id="{8a7469ff-b3aa-4679-9a5b-67047146d0c1}">
+		<property name="surroundPanDirection">
+			<value>43.8308601</value>
+		</property>
+		<property name="surroundPanExtent">
+			<value>219.089417</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{3d8bfde3-1233-4285-bd80-4fdfbdaf4a65}" />
 	<object class="MixerBusEffectChain" id="{d39a19da-7c7c-4cca-90db-f60f4e96c4f3}">
 		<relationship name="effects">
@@ -200,7 +207,11 @@
 	</object>
 	<object class="MixerBusPanner" id="{bf5049e0-f778-4c7e-b342-926bc45fd42c}" />
 	<object class="MixerBusFader" id="{9da1480f-600c-4e1c-8cfb-c206957a72b5}" />
-	<object class="SpatialiserEffect" id="{fa986c56-c9d4-4caa-9b9e-ec4fcf2432c1}" />
+	<object class="SpatialiserEffect" id="{fa986c56-c9d4-4caa-9b9e-ec4fcf2432c1}">
+		<property name="bypass">
+			<value>true</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{c147fed5-4ad8-4ad7-b0b5-06953e307d46}" />
 	<object class="MixerBusFader" id="{6d9c4717-542f-4a12-9ebd-7cdfe6a68c40}" />
 </objects>
